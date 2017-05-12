@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class App extends Component {
     render(){
         return (
-            <p>Hello World</p>
+            <div>
+                {this.props.children}
+            </div>
         )
     }
 }
+
+App.propTypes = {
+  children: PropTypes.object,
+};
 
 export default App;
