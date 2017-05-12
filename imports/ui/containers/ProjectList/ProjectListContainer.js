@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
 import PostList from './ProjectList';
 
-import styles from './styles.css'
+import './styles.css'
+
+
+const styles = {
+    width: '50%',
+    padding: '50px',
+    backgroundColor: 'black',
+    height: '100vh',
+}
 
 class ProjectListContainer extends Component {
+
     render(){
         return(
-            <PostList className={styles.projectList} />
+            <div style={{margin: '50px 100px'}}>
+                <PostList styles={styles} />
+            </div>
         )
     }
 }
