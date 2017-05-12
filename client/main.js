@@ -19,7 +19,7 @@ Meteor.startup(() => {
         <MainLayout>
           <App>
             <Switch>
-              <Route path="/projects" component={ProjectListContainer} />
+              <Route path="/" component={ProjectListContainer} />
             </Switch>
           </App>
         </MainLayout>

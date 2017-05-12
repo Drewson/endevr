@@ -6,7 +6,7 @@ import styles from './styles.css'
 class ProjectListContainer extends Component {
     render(){
         return(
-            <PostList className={styles.postList} />
+            <PostList className={styles.projectList} />
         )
     }
 }
