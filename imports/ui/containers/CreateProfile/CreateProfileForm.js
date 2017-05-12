@@ -86,7 +86,7 @@ class CreateProfileForm extends Gandalf {
 
   }
 
-  onChange = (pictures) => this.setState({ pictures });
+
 
   render() {
     const fields = this.state.fields;

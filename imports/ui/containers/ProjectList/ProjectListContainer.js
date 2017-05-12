@@ -5,7 +5,7 @@ class ProjectListContainer extends Component {
 
     render(){
         return(
-            <div style={{margin: '50px 100px'}}>
+            <div style={{margin: '30px 100px'}}>
                 <PostList />
             </div>
         )
