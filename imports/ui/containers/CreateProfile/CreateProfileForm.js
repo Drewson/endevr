@@ -1,7 +1,5 @@
 import React from 'react';
 
-import { connect } from 'react-redux';
-
 import Gandalf from 'gandalf-validator';
 
 import RaisedButton from 'material-ui/RaisedButton';
@@ -86,8 +84,6 @@ class CreateProfileForm extends Gandalf {
 
   }
 
-
-
   render() {
     const fields = this.state.fields;
 
@@ -121,4 +117,11 @@ class CreateProfileForm extends Gandalf {
   }
 }
 
-export default CreateProfileForm;
+export default createContainer(() => {
+
+  // return {
+  //   currentUser: Meteor.user(),
+  //   currentUserId: Meteor.userId(),
+  //   todos: ToDos.find({}).fetch()
+  // };
+}, App);
