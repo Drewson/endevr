@@ -4,10 +4,9 @@ import FlatButton from 'material-ui/FlatButton';
 
 const HeaderBar = () =>  ( 
   <AppBar 
-    // title='endevr'
     iconElementLeft={
       <div>
-        <FlatButton style={{color: 'white'}} label='endevr' />
+        <FlatButton style={{color: 'white'}} label='endevr' labelStyle={{textTransform: 'lowercase', fontSize: '2rem', textDecoration: 'underline'}} />
       </div>
     }
     iconElementRight={
