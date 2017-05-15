@@ -1,0 +1,11 @@
+{
+  "extends": "redacademy",
+  "plugins": ["react"],
+  "ecmaFeatures": {"jsx": true},
+  "rules": {
+    "indent": ["error", 4],
+    "arrow-body-style": 1,
+    "react/require-default-props": 0,
+    "react/jsx-filename-extension": 0
+  }
+}

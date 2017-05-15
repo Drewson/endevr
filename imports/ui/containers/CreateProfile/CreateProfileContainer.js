@@ -11,6 +11,7 @@ class CreateProfile extends Component {
     return (
       <div className='content-container'>
         <CreateProfileForm />
+        <p>hldasdadsiuharhekwjlshlshfle</p>
       </div>
     );
   }

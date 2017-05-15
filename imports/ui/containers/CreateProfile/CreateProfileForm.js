@@ -1,9 +1,11 @@
 import React from 'react';
-
+import { createContainer } from 'meteor/react-meteor-data';
 import Gandalf from 'gandalf-validator';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 class CreateProfileForm extends Gandalf {
   constructor() {
@@ -124,4 +126,4 @@ export default createContainer(() => {
   //   currentUserId: Meteor.userId(),
   //   todos: ToDos.find({}).fetch()
   // };
-}, App);
+}, CreateProfileForm);
