@@ -29,4 +29,14 @@ h2 {
   width: 55%;
   max-width: 300px;
   margin: 60px auto;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+  text-transform: uppercase;
+  background: none;
+}
+
+.splash-button:hover {
+  cursor: pointer;
 }
