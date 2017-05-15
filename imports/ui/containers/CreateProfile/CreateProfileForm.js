@@ -4,8 +4,7 @@ import Gandalf from 'gandalf-validator';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-injectTapEventPlugin();
+
 
 import styles from './styles.css';
 
