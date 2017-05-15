@@ -11,6 +11,7 @@ import YourProjects from '../imports/ui/containers/YourProjects/YourProjects';
 import SingleProjectContainer from '../imports/ui/containers/SingleProjectContainer/SingleProjectContainer';
 import CreateProfileContainer from '../imports/ui/containers/CreateProfile/CreateProfileContainer';
 import BuildProfileSelectContainer from '../imports/ui/containers/BuildProfileSelectPage/BuildProfileSelectContainer';
+import Nominate from '../imports/ui/containers/Nominate/Nominate';
 import MainLayout from '../imports/ui/layouts/MainLayout';
 import App from '../imports/ui/containers/app/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -34,6 +35,7 @@ Meteor.startup(() => {
               <Route path="/myprojects" component={YourProjects} />
               <Route path="/project" component={SingleProjectContainer} />
               <Route path="/createprofile" component={BuildProfileSelectContainer} />
+              <Route path="/nominate" component={Nominate} />
             </Switch>
           </App>
         </MainLayout>
