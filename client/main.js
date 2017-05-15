@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import { Meteor } from 'meteor/meteor';import {
   BrowserRouter as Router,
   Route,
-  Switch
+  Switch,
 } from 'react-router-dom';
 
 import ProjectListContainer from '../imports/ui/containers/ProjectList/ProjectListContainer'
-import CreateProfileContainer from '../imports/ui/containers/CreateProfile/CreateProfileContainer'
+import YourProjects from '../imports/ui/containers/YourProjects/YourProjects';
+import SingleProjectContainer from '../imports/ui/containers/SingleProjectContainer/SingleProjectContainer';
+import CreateProfileContainer from '../imports/ui/containers/CreateProfile/CreateProfileContainer';
 import MainLayout from '../imports/ui/layouts/MainLayout';
 import App from '../imports/ui/containers/app/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -22,6 +24,8 @@ Meteor.startup(() => {
             <Switch>
               <Route exact path="/" component={ProjectListContainer} />
               <Route path="/signup" component={CreateProfileContainer} />
+              <Route path="/myprojects" component={YourProjects} />
+              <Route path="/project" component={SingleProjectContainer} />
             </Switch>
           </App>
         </MainLayout>
