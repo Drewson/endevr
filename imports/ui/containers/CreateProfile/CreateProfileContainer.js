@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CreateProfileForm from './CreateProfileForm';
 
-class CreateProfile extends Component {
+class CreateProfileContainer extends Component {
   constructor() {
     super();
   }
@@ -11,8 +11,9 @@ class CreateProfile extends Component {
     return (
       <div className='content-container'>
         <CreateProfileForm />
-        <p>hldasdadsiuharhekwjlshlshfle</p>
       </div>
     );
   }
 }
+
+export default CreateProfileContainer;
