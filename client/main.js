@@ -20,7 +20,7 @@ Meteor.startup(() => {
         <MainLayout>
           <App>
             <Switch>
-              <Route path="/" component={ProjectListContainer} />
+              <Route exact path="/" component={ProjectListContainer} />
               <Route path="/signup" component={CreateProfileContainer} />
             </Switch>
           </App>

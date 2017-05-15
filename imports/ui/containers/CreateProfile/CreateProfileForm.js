@@ -7,6 +7,8 @@ import TextField from 'material-ui/TextField';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
+import styles from './styles.css';
+
 class CreateProfileForm extends Gandalf {
   constructor() {
 
@@ -93,37 +95,30 @@ class CreateProfileForm extends Gandalf {
       <form>
         <h2>Create Your Profile</h2>
 
-        <RaisedButton
-          containerElement='label' // <-- Just add me!
-          label='Add Image'>
-            <input type="file" style={{ display: 'none' }} />
-        </RaisedButton>
+        <section className='image-upload-area'>
+          <div className='profile-image-display'></div>
+          <RaisedButton
+            containerElement='label' // <-- Just add me!
+            label='Add Image'>
+              <input type="file" style={{ display: 'none' }} />
+          </RaisedButton>
+        </section>
 
         { fields.name.element } <br />
         { fields.bio.element } <br />
         { fields.location.element } <br />
-        <div class='skills-list'></div> <br />
+        <div className='skills-list'></div> <br />
         { fields.skills.element } <br />
         { fields.email.element } <br />
         { fields.socialLinks.element } <br />
 
         <RaisedButton
-            label={'Submit'}
-            // style={buttonStyles}
-            // buttonStyle={redButtonStyles}
-            labelColor="#FFF"
-            // onTouchTap={() => this.handleSubmit()}
-        />
+            label='Submit'
+        >
+        </RaisedButton>
       </form>
     );
   }
 }
 
-export default createContainer(() => {
-
-  // return {
-  //   currentUser: Meteor.user(),
-  //   currentUserId: Meteor.userId(),
-  //   todos: ToDos.find({}).fetch()
-  // };
-}, CreateProfileForm);
+export default CreateProfileForm;
