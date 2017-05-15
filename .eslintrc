@@ -1,9 +1,10 @@
 {
-  "extends": "redacademy",
+  "extends": "airbnb",
+  "parser": "babel-eslint",
   "plugins": ["react"],
   "ecmaFeatures": {"jsx": true},
   "rules": {
-    "indent": ["error", 4],
+    "indent": ["error", 2],
     "arrow-body-style": 1,
     "react/require-default-props": 0,
     "react/jsx-filename-extension": 0
