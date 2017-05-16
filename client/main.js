@@ -10,7 +10,9 @@ import ProjectListContainer from '../imports/ui/containers/ProjectList/ProjectLi
 import YourProjects from '../imports/ui/containers/YourProjects/YourProjects';
 import SingleProjectContainer from '../imports/ui/containers/SingleProjectContainer/SingleProjectContainer';
 import CreateProfileContainer from '../imports/ui/containers/CreateProfile/CreateProfileContainer';
-import BuildProfileSelectContainer from '../imports/ui/containers/BuildProfileSelectPage/BuildProfileSelectContainer';
+import CreateProfileSelectContainer from '../imports/ui/containers/CreateProfileSelectPage/CreateProfileSelectContainer';
+import ViewProfileContainer from '../imports/ui/containers/ViewProfile/ViewProfileContainer';
+import CreateProjectContainer from '../imports/ui/containers/CreateProject/CreateProjectContainer';
 import Nominate from '../imports/ui/containers/Nominate/Nominate';
 import MainLayout from '../imports/ui/layouts/MainLayout';
 import App from '../imports/ui/containers/app/index';
@@ -32,9 +34,12 @@ Meteor.startup(() => {
             <Switch>
               <Route exact path="/" component={ProjectListContainer} />
               <Route path="/signup" component={CreateProfileContainer} />
+              <Route path="/createproject" component={CreateProjectContainer} />
               <Route path="/myprojects" component={YourProjects} />
               <Route path="/project" component={SingleProjectContainer} />
-              <Route path="/createprofile" component={BuildProfileSelectContainer} />
+              <Route path="/newprofile" component={CreateProfileSelectContainer} />
+              <Route path="/createprofile" component={CreateProfileContainer} />
+              <Route path="/viewprofile" component={ViewProfileContainer} />
               <Route path="/nominate" component={Nominate} />
             </Switch>
           </App>
