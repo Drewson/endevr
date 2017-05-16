@@ -8,7 +8,7 @@ Meteor.startup(() => {
   if ( Meteor.users.find().count() === 0) {
     userId = Accounts.createUser({
       email: 'bilbo@bilbo.com',
-      password: '666666'
+      password: '333'
     })
   }
 });
