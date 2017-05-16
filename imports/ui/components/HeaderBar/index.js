@@ -1,16 +1,22 @@
+import { createContainer } from 'meteor/react-meteor-data';
 import React from 'react';
-import AppBar from 'material-ui/AppBar';
+import {Link} from 'react-router-dom';
 import FlatButton from 'material-ui/FlatButton';
+import AppBar from 'material-ui/AppBar';
 import AccountsUIWrapper from '../AccountsUiWrapper/index';
 
-const HeaderBar = () =>  (
+const HeaderBar = ({ currentUserId }) =>  (
   <AppBar
     iconElementLeft={
       <div>
-        <FlatButton
-        style={{color: 'white'}}
-        label='endevr'
-        labelStyle={{textTransform: 'lowercase', fontSize: '2rem', padding: '10px', backgroundColor:'#424242'}} />
+            <FlatButton
+            style={{color: 'white'}}
+            label='endevr'
+            labelStyle={{textTransform: 'lowercase', fontSize: '2rem', padding: '10px', backgroundColor:'#424242'}} />
+
+            { currentUserId &&
+              <Link to='/myprojects'><FlatButton label="MyProjects" style={{color:'white'}} /></Link>
+            }
       </div>
     }
     iconElementRight={
@@ -23,3 +29,4 @@ const HeaderBar = () =>  (
   );
 
 export default HeaderBar;
+

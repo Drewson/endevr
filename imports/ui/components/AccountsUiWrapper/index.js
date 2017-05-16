@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
 import { Template } from 'meteor/templating';
 import { Blaze } from 'meteor/blaze';
 import './style.css';
@@ -13,6 +14,11 @@ export default class AccountsUIWrapper extends Component {
     Blaze.remove(this.view);
   }
   render() {
-    return <span ref="container" />;
+    return (
+      <div>
+        <span ref="container" />
+        <Link to='/signup'>Create Profile</Link>
+      </div>
+    );
   }
 }
