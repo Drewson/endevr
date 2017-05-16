@@ -18,6 +18,7 @@
     "react-router-dom": "^4.1.1",
     "react-tap-event-plugin": "^2.0.1",
     "rebuild": "^0.1.2",
+    "semantic-ui-react": "^0.68.3",
     "url-search-params-polyfill": "^1.1.0"
   },
   "devDependencies": {

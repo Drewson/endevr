@@ -5,6 +5,8 @@ import Gandalf from 'gandalf-validator';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 
+import { Input } from 'semantic-ui-react';
+
 
 import styles from './styles.css';
 
@@ -16,6 +18,14 @@ class CreateProfileForm extends Gandalf {
     }
 
     const fields = [
+      {
+        name: 'imageupload',
+        component: Input,
+        props: {
+          style: {display: 'none'},
+          type: 'file',
+        }
+      },
       {
         name: 'name',
         component: TextField,
@@ -97,9 +107,9 @@ class CreateProfileForm extends Gandalf {
         <section className='image-upload-area'>
           <div className='profile-image-display'></div>
           <RaisedButton
-            containerElement='label' // <-- Just add me!
-            label='Add Image'>
-              <input type="file" style={{ display: 'none' }} />
+            containerElement='label'
+            label='Add an Image'>
+              { fields.imageupload.element }
           </RaisedButton>
         </section>
 
