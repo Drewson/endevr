@@ -1,6 +1,7 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
+import AccountsUIWrapper from '../AccountsUiWrapper/index';
 
 const HeaderBar = () =>  (
   <AppBar
@@ -14,8 +15,9 @@ const HeaderBar = () =>  (
     }
     iconElementRight={
       <div>
-        <FlatButton style={{color: 'white'}} label='Login' />
-        <FlatButton style={{color: 'white'}} label='Sign-Up' />
+        <div className='login-wrapper'>
+          <AccountsUIWrapper />
+        </div>
       </div>
   } />
   );
