@@ -51,6 +51,7 @@ class CreateProfileForm extends Gandalf {
       {
         name: 'location',
         component: TextField,
+        validators: [],
         errorPropName: 'errorText',
         props: {
           hintText: 'Enter Your Location',
@@ -80,7 +81,7 @@ class CreateProfileForm extends Gandalf {
       {
         name: 'socialLinks',
         component: TextField,
-        validators: ['required'],
+        validators: [],
         errorPropName: 'errorText',
         props: {
           hintText: 'Enter A Link to Your Social Media Profile',
@@ -93,21 +94,19 @@ class CreateProfileForm extends Gandalf {
   }
 
   handleSubmit() {
+
     const data = this.getCleanFormData();
 
     if(!data) return;
 
+    console.log(data);
   }
 
   componentDidUpdate() {
 
-    console.log('works!!!!!!!!!!!!');
-
     if(this.state.fields.imageupload.value) {
 
       let file = document.getElementById('image-uploader').files[0];
-
-      console.log(file);
 
       let reader = new FileReader();
 
@@ -144,6 +143,7 @@ class CreateProfileForm extends Gandalf {
 
         <RaisedButton
             label='Submit'
+            onTouchTap={() => this.handleSubmit()}
         >
         </RaisedButton>
       </form>
