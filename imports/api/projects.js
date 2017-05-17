@@ -2,9 +2,6 @@ import { Mongo } from 'meteor/mongo';
 
 export const Projects = new Mongo.Collection('projects');
 
-// const userCanUpdateToDo = (userId, todoOwnerId) => (
-//     userId && userId === todoOwnerId
-// )
 
 if (Meteor.isServer){
 

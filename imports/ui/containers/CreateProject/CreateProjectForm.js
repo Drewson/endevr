@@ -2,6 +2,7 @@ import React from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import Gandalf from 'gandalf-validator';
 
+import { Card, CardMedia } from 'material-ui/Card';
 import SelectField from 'material-ui/SelectField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
@@ -13,6 +14,12 @@ import { Input } from 'semantic-ui-react';
 
 
 // import styles from './styles.css';
+
+const projectImageStyles = {
+  height: '220px',
+  width: '300px',
+  marginRight: '50px',
+}
 
 class CreateProjectForm extends Gandalf {
   constructor() {
@@ -30,6 +37,8 @@ class CreateProjectForm extends Gandalf {
         props: {
           style: {display: 'none'},
           type: 'file',
+          id: 'image-uploader',
+          multiple: 'true'
         }
       },
       {
@@ -122,7 +131,13 @@ class CreateProjectForm extends Gandalf {
 
     if(this.state.fields.imageupload.value) {
 
-    document.getElementById('profile-image').style.background = `url(${this.state.fields.imageupload.value})`
+      let file = document.getElementById('image-uploader').files[0];
+
+      let reader = new FileReader();
+
+      reader.onload = e =>  document.getElementById('project-image').style.background = `url(${e.target.result})`;
+
+      reader.readAsDataURL(file);
 
     }
   }
@@ -135,7 +150,8 @@ class CreateProjectForm extends Gandalf {
         <h2>Create A New Project</h2>
 
         <section className='image-upload-area'>
-          <div id='profile-image' className='profile-image-display'></div>
+          <Card style={projectImageStyles} id='project-image'>
+          </Card>
           <RaisedButton
             containerElement='label'
             label='Add an Image'
@@ -158,7 +174,6 @@ class CreateProjectForm extends Gandalf {
 
         <RaisedButton
           label='Submit'
-          onTouchTap={() => this.handleSubmit()}
         >
         </RaisedButton>
       </form>
