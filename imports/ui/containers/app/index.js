@@ -18,10 +18,15 @@ import ViewProfileContainer from '../ViewProfile/ViewProfileContainer';
 import CreateProjectContainer from '../CreateProject/CreateProjectContainer';
 import Nominate from '../Nominate/Nominate';
 import HeaderBar from '../../components/HeaderBar';
+import { Profiles } from '../../../api/profiles';
+import { Projects } from '../../../api/projects';
 
 class App extends Component {
 
     render(){
+
+        let profilesProp = this.props.profiles;
+
         return (
             <div>
                 <Router>
@@ -35,7 +40,7 @@ class App extends Component {
                             <Route path="/project" component={SingleProjectContainer} />
                             <Route path="/newprofile" component={CreateProfileSelectContainer} />
                             <Route path="/createprofile" component={CreateProfileContainer} />
-                            <Route path="/viewprofile" component={ViewProfileContainer} />
+                            <Route path="/viewprofile" render={() => <ViewProfileContainer profiles={profilesProp} /> } />
                             <Route path="/nominate" component={Nominate} />
                         </Switch>
                     </div>
@@ -50,14 +55,18 @@ App.propTypes = {
 };
 
 export default createContainer(() => {
-  const handleUsers = Meteor.subscribe('userList');
+  const handleUsers = Meteor.subscribe('profiles');
   const ready = handleUsers.ready();
   const users = Meteor.users.find({});
   const gotUsers = ready && !!users
+  const profiles = Profiles.find({});
+  const projects = Projects.find({});
 
   return {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
-    all: gotUsers ? users.fetch() : []
+    users: gotUsers ? users.fetch() : [],
+    profiles: profiles.fetch(),
+    projects: projects.fetch()
   };
 }, App);
