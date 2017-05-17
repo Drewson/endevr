@@ -93,11 +93,10 @@ class CreateProfileForm extends Gandalf {
   }
 
   handleSubmit(event) {
-    event.preventDefault();
+
     const data = this.getCleanFormData();
     console.log(data + ' ????')
     if(!data) return;
-
   }
 
   componentDidUpdate() {
@@ -146,7 +145,6 @@ class CreateProfileForm extends Gandalf {
 
         <RaisedButton
             label='Submit'
-            type='submit'
         >
         </RaisedButton>
       </form>
