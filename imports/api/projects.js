@@ -20,14 +20,10 @@ Meteor.methods({
             throw new Meteor.Error('not-authorized')
         }
 
-
-
         Projects.insert({
             owner: this.userId,
             ...projectInfo
         });
-
-        console.log(Projects.find({owner: this.userId}));
     },
 
 
