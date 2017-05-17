@@ -21,9 +21,11 @@ class CreateProfileForm extends Gandalf {
       {
         name: 'imageupload',
         component: Input,
+        validators: ['required'],
         props: {
           style: {display: 'none'},
           type: 'file',
+          id: 'image-uploader',
         }
       },
       {
@@ -98,6 +100,25 @@ class CreateProfileForm extends Gandalf {
 
   }
 
+  componentDidUpdate() {
+
+    console.log('works!!!!!!!!!!!!');
+
+    if(this.state.fields.imageupload.value) {
+
+      let file = document.getElementById('image-uploader').files[0];
+
+      console.log(file);
+
+      let reader = new FileReader();
+
+      reader.onload = e =>  document.getElementById('profile-image').style.background = `url(${e.target.result})`;
+
+      reader.readAsDataURL(file);
+    }
+
+  }
+
   render() {
 
     const fields = this.state.fields;
@@ -107,7 +128,7 @@ class CreateProfileForm extends Gandalf {
         <h2>Create Your Profile</h2>
 
         <section className='image-upload-area'>
-          <div className='profile-image-display'></div>
+          <div id='profile-image' className='profile-image-display'></div>
           <RaisedButton
             containerElement='label'
             label='Add an Image'>

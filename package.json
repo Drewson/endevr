@@ -9,6 +9,7 @@
     "bcrypt": "^1.0.2",
     "gandalf-validator": "^0.8.4",
     "material-ui": "^0.17.3",
+    "material-ui-upload": "^1.1.2",
     "meteor-node-stubs": "~0.2.4",
     "node-gyp": "^3.6.1",
     "prop-types": "^15.5.8",
