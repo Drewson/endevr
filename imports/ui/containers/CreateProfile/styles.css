@@ -28,4 +28,5 @@ h2 {
   border: 1px solid black;
   border-radius: 50%;
   background: #E1E1E1;
+  background-position: center bottom;
 }
