@@ -32,7 +32,6 @@ class CreateProjectForm extends Gandalf {
       {
         name: 'imageupload',
         component: Input,
-        errorPropName: 'errorText',
         validators: ['required'],
         props: {
           style: {display: 'none'},
@@ -95,7 +94,7 @@ class CreateProjectForm extends Gandalf {
         ]
       },
       {
-        name: 'radiogroup',
+        name: 'payment',
         component: RadioButtonGroup,
         validators: ['required'],
         props: {
@@ -103,8 +102,8 @@ class CreateProjectForm extends Gandalf {
           label: 'isitpaid'
         },
         children: [
-          <RadioButton name='paid' label='Paid' value='paid' />,
-          <RadioButton name='unpaid' label='Unaid' value='unpaid' />
+          <RadioButton key={'paid1'} name='paid' label='Paid' value='paid' />,
+          <RadioButton key={'paid2'} name='unpaid' label='Unaid' value='unpaid' />
         ],
       }
     ]
@@ -121,6 +120,21 @@ class CreateProjectForm extends Gandalf {
 
     const data = this.getCleanFormData();
     console.log(data);
+
+    let file = document.getElementById('image-uploader').files[0];
+
+    let reader = new FileReader();
+
+    reader.readAsDataURL(file);
+
+    let realPath = 'string';
+
+    reader.onload = e => {
+      let newData = {...data};
+      newData.imageupload = e.target.result;
+
+      Meteor.call('projects.addProject', newData);
+    }
 
     if(!data) return;
 
@@ -168,7 +182,7 @@ class CreateProjectForm extends Gandalf {
         { fields.categories.element } <br />
         <div className="payment-select-area">
           <h4>Select a Category</h4>
-          { fields.radiogroup.element }
+          { fields.payment.element }
         </div>
 
         <RaisedButton

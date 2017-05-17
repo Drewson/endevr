@@ -12,20 +12,23 @@ if (Meteor.isServer){
 }
 
 
-// Meteor.methods({
+Meteor.methods({
 
-//     'projects.addProject' (projectInfo){
+    'projects.addProject' (projectInfo){
 
-//         if(!this.userId){
-//             throw new Meteor.Error('not-authorized')
-//         }
-
-//         Projects.insert({
-//          title: inputValue,
-//          complete: false,
-//          owner: this.userId
-//        })
-//     },
+        if(!this.userId){
+            throw new Meteor.Error('not-authorized')
+        }
 
 
-// });
+
+        Projects.insert({
+            owner: this.userId,
+            ...projectInfo
+        });
+
+        console.log(Projects.find({owner: this.userId}));
+    },
+
+
+});
