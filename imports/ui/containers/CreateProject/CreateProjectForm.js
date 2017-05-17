@@ -64,7 +64,7 @@ class CreateProjectForm extends Gandalf {
       {
         name: 'teamlocation',
         component: TextField,
-        validators: ['required'],
+        validators: [],
         errorPropName: 'errorText',
         props: {
           hintText: 'Enter Your Team\'s Location',
@@ -118,7 +118,6 @@ class CreateProjectForm extends Gandalf {
   }
 
   handleSubmit() {
-    console.log('Works!');
 
     const data = this.getCleanFormData();
     console.log(data);
@@ -174,6 +173,7 @@ class CreateProjectForm extends Gandalf {
 
         <RaisedButton
           label='Submit'
+          onTouchTap={() => this.handleSubmit()}
         >
         </RaisedButton>
       </form>

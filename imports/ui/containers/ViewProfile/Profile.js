@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Profiles } from '../../../api/profiles';
+import { createContainer } from 'meteor/react-meteor-data';
 
 import IconButton from 'material-ui/IconButton';
 
@@ -57,5 +59,10 @@ const Profile = ({ user }) => {
   );
 }
 
-export default Profile;
+export default createContainer(() => {
+  const handle = Meteor.subscribe('userList')
+  return {
+    all: Profiles.find({}).fetch(),
+  };
+}, Profile);
 

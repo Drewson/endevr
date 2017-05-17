@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import HeaderBar from './../../components/HeaderBar';
 import { createContainer } from 'meteor/react-meteor-data';
+import { Profiles } from '../../../api/profiles';
+
 
 class MainLayout extends Component{
 
-  componentDidMount(){
 
-  }
 
   render(){
-    console.log(this.props.all);
+    console.log(this.props.profiles);
     return (
       <div>
         <HeaderBar currentUserId={this.props.currentUserId} />
@@ -32,6 +32,6 @@ export default createContainer(() => {
   return {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
-    all: gotUsers ? users.fetch() : []
+    profiles: Profiles.find({}).fetch(),
   };
 }, MainLayout);
