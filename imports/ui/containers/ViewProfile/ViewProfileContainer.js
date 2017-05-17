@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { createContainer } from 'meteor/react-meteor-data';
 
 import Profile from './Profile';
 
@@ -43,10 +44,21 @@ class ViewProfileContainer extends Component {
     return(
       <div className='content-container'>
         <h2>Your Profile</h2>
-        <Profile user={mockUser}/>
+        <Profile user={this.props.profiles}/>
       </div>
     );
   }
 }
 
-export default ViewProfileContainer;
+export default createContainer(() => {
+  const handle = Meteor.subscribe('userList')
+  const ready = handle.ready();
+  const users = Meteor.users.find({});
+  const gotUsers = ready && !!users
+  return {
+    currentUser: Meteor.user(),
+    currentUserId: Meteor.userId(),
+    profiles: Profiles.find({}).fetch(),
+  };
+}, ViewProfileContainer);
+

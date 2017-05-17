@@ -10,7 +10,6 @@ class MainLayout extends Component{
 
 
   render(){
-    console.log(this.props.profiles);
     return (
       <div>
         <HeaderBar currentUserId={this.props.currentUserId} />

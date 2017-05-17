@@ -7,7 +7,7 @@ import IconButton from 'material-ui/IconButton';
 
 import Project from '../../components/Project/project';
 
-const Profile = ({ user }) => {
+const Profile = ({ profile }) => {
 
   return (
     <div>
