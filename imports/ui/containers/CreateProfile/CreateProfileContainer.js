@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CreateProfileForm from './CreateProfileForm';
+import { createContainer } from 'meteor/react-meteor-data';
 
 class CreateProfileContainer extends Component {
   constructor() {
@@ -10,10 +11,14 @@ class CreateProfileContainer extends Component {
   render() {
     return (
       <div className='content-container'>
-        <CreateProfileForm />
+        <CreateProfileForm currentUserId={this.props.currentUserId} />
       </div>
     );
   }
 }
 
-export default CreateProfileContainer;
+export default createContainer(() => {
+  return {
+    currentUserId: Meteor.userId(),
+  };
+}, CreateProfileContainer);

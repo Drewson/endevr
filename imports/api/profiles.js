@@ -10,3 +10,4 @@ export const Profiles = new Mongo.Collection('profiles');
 Meteor.publish('userList', function (){
   return Meteor.users.find({}, { fields: { email: 1 }});
 });
+

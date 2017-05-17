@@ -90,18 +90,20 @@ class CreateProfileForm extends Gandalf {
     super(fields);
   }
 
-  handleSubmit() {
+  handleSubmit(event) {
+    event.preventDefault();
     const data = this.getCleanFormData();
-
+    console.log(data + ' ????')
     if(!data) return;
 
   }
 
   render() {
+
     const fields = this.state.fields;
 
     return (
-      <form>
+      <form onSubmit={ this.handleSubmit }>
         <h2>Create Your Profile</h2>
 
         <section className='image-upload-area'>
@@ -123,6 +125,7 @@ class CreateProfileForm extends Gandalf {
 
         <RaisedButton
             label='Submit'
+            type='submit'
         >
         </RaisedButton>
       </form>
