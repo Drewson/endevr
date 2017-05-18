@@ -6,7 +6,7 @@ export const Projects = new Mongo.Collection('projects');
 if (Meteor.isServer){
 
     Meteor.publish('projects', function (){
-        return Projects.find({}, { fields: { categories: 1, imageupload: 1, payment: 1, projectdescription: 1,
+        return Projects.find({}, { fields: { categories: 1, imageupload: 1, owner: 1, payment: 1, projectdescription: 1,
                                             projectname: 1, roles: 1, teamlocation: 1 }
         })
     });
@@ -25,7 +25,8 @@ Meteor.methods({
             owner: this.userId,
             ...projectInfo
         });
-    },
 
+        console.log(Projects.find().fetch());
+    },
 
 });
