@@ -10,7 +10,7 @@ import {
 import { createContainer } from 'meteor/react-meteor-data';
 
 import ProjectListContainer from '../ProjectList/ProjectListContainer'
-import YourProjects from '../YourProjects/YourProjects';
+import MyProjectsContainer from '../MyProjects/MyProjectsContainer';
 import SingleProjectContainer from '../SingleProjectContainer/SingleProjectContainer';
 import CreateProfileContainer from '../CreateProfile/CreateProfileContainer';
 import CreateProfileSelectContainer from '../CreateProfileSelectPage/CreateProfileSelectContainer';
@@ -38,7 +38,7 @@ class App extends Component {
                             <Route exact path="/" render={() => projectsProp && <ProjectListContainer projects={projectsProp} /> } />
                             <Route path="/signup" component={CreateProfileContainer} />
                             <Route path="/createproject" component={CreateProjectContainer} />
-                            <Route path="/myprojects" component={YourProjects} />
+                            <Route path="/myprojects" render={() => projectsProp && <MyProjectsContainer projects={projectsProp} /> } />
                             <Route path="/project" component={SingleProjectContainer} />
                             <Route path="/newprofile" component={CreateProfileSelectContainer} />
                             <Route path="/createprofile" component={CreateProfileContainer} />
