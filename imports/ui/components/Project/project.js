@@ -4,10 +4,13 @@ import 'url-search-params-polyfill';
 import FlatButton from 'material-ui/FlatButton';
 import Chip from 'material-ui/Chip';
 
-const Project = () => {
+const Project = (project) => {
+    console.log(project.project)
     return (
         <Card>
-            <CardTitle title='test' />
+            <CardTitle title={project.project.projectname} />
+            <p>{project.project.projectdescription}</p>
+            <img src={project.project.imageupload}  style={{maxWidth:'450px', maxHeight:'450px'}} />
         </Card>
     )
 }

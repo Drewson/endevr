@@ -7,7 +7,7 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import App from '../imports/ui/containers/App/index';
+import App from '../imports/ui/containers/app/index';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import muiTheme from './mui-theme';
 
