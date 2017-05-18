@@ -4,21 +4,30 @@ import { Profiles } from '../../../api/profiles';
 import { createContainer } from 'meteor/react-meteor-data';
 
 import IconButton from 'material-ui/IconButton';
+import Avatar from 'material-ui/Avatar';
 
-import Project from '../../components/Project/project';
 
 const Profile = ({ profile }) => {
 
-  const displayProfileImage = ( profile ) => {
-    document.getElementById('profile-image').style.background = `url(${ profile.imageupload })`
+  const avatarStyles = {
+    height: '180px',
+    width: '180px'
   }
 
   return (
     <div>
       <section className='profile-header-area'>
 
-        { profile.imageupload && ( <div id='profile-image' style='background: url("' + {profile.imageupload} + '');' className='profile-image-display'></div> )
+        {
+          profile.imageupload ? (
+            <Avatar
+              src={profile.imageupload}
+              style={avatarStyles}
+            >
+            </Avatar>
+            ) : ( <Avatar style={avatarStyles}></Avatar> )
         }
+
         <h3>Name:<span>{ profile.name }</span></h3>
       </section>
       <section className='profile-main-section'>
