@@ -12,14 +12,17 @@ class ViewProfileContainer extends Component {
 
 
   render() {
-    console.log(this.props.profiles)
+
     return(
       <div className='content-container'>
         <h2>Your Profile</h2>
 
-        { this.props.profiles.map( (profile) => {
-          return profile._id === Meteor.userId() ? <Profile profile={profile} /> : false;
-        })}
+        {
+          this.props.profiles.map( (profile) => {
+
+            return profile._id === Meteor.userId() ? <Profile profile={profile} /> : false;
+          })
+        }
       </div>
     );
   }
