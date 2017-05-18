@@ -5,7 +5,6 @@ import FlatButton from 'material-ui/FlatButton';
 import Chip from 'material-ui/Chip';
 
 const Project = (project) => {
-    console.log(project.project)
     return (
         <Card>
             <CardTitle title={project.project.projectname} />
