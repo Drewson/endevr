@@ -17,6 +17,8 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
 
+    console.log('Stuff is happening', profileInfo);
+
     Profiles.insert({
       _id: this.userId,
       name: profileInfo.name,
