@@ -6,15 +6,13 @@ import Chip from 'material-ui/Chip';
 
 const Project = ({ project }) => {
 
-console.log(project);
-
     return (
         <Card>
             <CardTitle title={project.projectname} />
             <p>{project.projectdescription}</p>
             <img src={project.imageupload}  style={{maxWidth:'450px', maxHeight:'450px'}} />
         </Card>
-    )
+    );
 }
 
 export default Project;

@@ -17,9 +17,6 @@ class MyProjectsContainer extends Component {
 
         {
           this.props.projects.map( (project) => {
-
-            console.log(project);
-
             return project.owner === Meteor.userId() && <Project key={project._id + project.owner} project={project} />;
           })
         }
