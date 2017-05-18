@@ -15,9 +15,9 @@ if (Meteor.isServer){
 
 Meteor.methods({
 
-    'projects.addProject' (projectInfo){
+    'projects.addProject' (projectInfo) {
 
-        if(!this.userId){
+        if(!this.userId) {
             throw new Meteor.Error('not-authorized')
         }
 
@@ -28,5 +28,15 @@ Meteor.methods({
 
         console.log(Projects.find().fetch());
     },
+
+    // 'projects.getSingleProject' (projectId) {
+    //     if(!projectId) {
+    //         throw new Meteor.Error('no project ID provided')
+    //     }
+
+    //     const theProject = Projects.find({_id: projectId}).fetch();
+
+    //     return theProject;
+    // }
 
 });
