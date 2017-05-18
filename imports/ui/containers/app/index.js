@@ -42,7 +42,7 @@ class App extends Component {
                             <Route path="/project" component={SingleProjectContainer} />
                             <Route path="/newprofile" component={CreateProfileSelectContainer} />
                             <Route path="/createprofile" component={CreateProfileContainer} />
-                            <Route path="/viewprofile" render={() => <ViewProfileContainer profiles={profilesProp} /> } />
+                            <Route path="/viewprofile" render={() => profilesProp && <ViewProfileContainer profiles={profilesProp} /> } />
                             <Route path="/nominate" component={Nominate} />
                             <Route path="/inviteusers" render={() => profilesProp && <UserListContainer profiles={profilesProp} /> } />
                         </Switch>

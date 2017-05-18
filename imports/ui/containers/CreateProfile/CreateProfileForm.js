@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
+import {Link} from 'react-router-dom';
 import Gandalf from 'gandalf-validator';
 
 import RaisedButton from 'material-ui/RaisedButton';
@@ -156,12 +157,13 @@ class CreateProfileForm extends Gandalf {
         { fields.skills.element } <br />
         { fields.email.element } <br />
         { fields.socialLinks.element } <br />
-
+        <Link to='/viewprofile' >
         <RaisedButton
             label='Submit'
             onTouchTap={() => this.handleSubmit()}
         >
         </RaisedButton>
+        </Link>
       </form>
     );
   }
