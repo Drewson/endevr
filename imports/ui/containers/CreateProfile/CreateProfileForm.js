@@ -119,7 +119,7 @@ class CreateProfileForm extends Gandalf {
 
   componentDidUpdate() {
 
-    if(this.state.fields.imageupload.value) {
+    if( this.state.fields.imageupload.value && document.getElementById('profile-image') ) {
 
       let file = document.getElementById('image-uploader').files[0];
 
