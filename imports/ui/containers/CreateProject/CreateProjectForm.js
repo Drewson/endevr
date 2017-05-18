@@ -119,21 +119,20 @@ class CreateProjectForm extends Gandalf {
   handleSubmit() {
 
     const data = this.getCleanFormData();
-    Meteor.call('projects.addProject', data);
     let file = document.getElementById('image-uploader').files[0];
 
-    // let reader = new FileReader();
+    let reader = new FileReader();
 
-    // reader.readAsDataURL(file);
+    reader.readAsDataURL(file);
 
-    // let realPath = 'string';
+    let realPath = 'string';
 
-    // reader.onload = e => {
-    //   let newData = {...data};
-    //   newData.imageupload = e.target.result;
+    reader.onload = e => {
+      let newData = {...data};
+      newData.imageupload = e.target.result;
 
-    //   Meteor.call('projects.addProject', newData);
-    // }
+      Meteor.call('projects.addProject', newData);
+    }
 
     if(!data) return;
 

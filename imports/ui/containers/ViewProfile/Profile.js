@@ -16,9 +16,6 @@ const Profile = ({ profile }) => {
   return (
     <div>
       <section className='profile-header-area'>
-
-        { profile.imageupload && ( <div id='profile-image' style='background: url("' + {profile.imageupload} + '');' className='profile-image-display'></div> )
-        }
         <h3>Name:<span>{ profile.name }</span></h3>
       </section>
       <section className='profile-main-section'>

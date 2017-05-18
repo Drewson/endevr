@@ -16,6 +16,7 @@ import CreateProfileContainer from '../CreateProfile/CreateProfileContainer';
 import CreateProfileSelectContainer from '../CreateProfileSelectPage/CreateProfileSelectContainer';
 import ViewProfileContainer from '../ViewProfile/ViewProfileContainer';
 import CreateProjectContainer from '../CreateProject/CreateProjectContainer';
+import UserListContainer from '../UserList/UserListContainer';
 import Nominate from '../Nominate/Nominate';
 import HeaderBar from '../../components/HeaderBar';
 import { Profiles } from '../../../api/profiles';
@@ -43,6 +44,7 @@ class App extends Component {
                             <Route path="/createprofile" component={CreateProfileContainer} />
                             <Route path="/viewprofile" render={() => <ViewProfileContainer profiles={profilesProp} /> } />
                             <Route path="/nominate" component={Nominate} />
+                            <Route path="/inviteusers" render={() => profilesProp && <UserListContainer profiles={profilesProp} /> } />
                         </Switch>
                     </div>
                 </Router>
@@ -56,11 +58,11 @@ App.propTypes = {
 };
 
 export default createContainer(() => {
+
   const handleProfiles = Meteor.subscribe('profiles');
-  const ready = handleProfiles.ready();
-  const users = Meteor.users.find({});
-  const gotUsers = ready && !!users
+  const readyProfiles = handleProfiles.ready();
   const profiles = Profiles.find({});
+  const gotProfiles = readyProfiles && !!profiles;
 
   const handleProjects = Meteor.subscribe('projects');
   const readyProjects = handleProjects.ready();
@@ -68,10 +70,8 @@ export default createContainer(() => {
   const gotProjects = readyProjects && !!projects;
 
   return {
-    currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
-    users: gotUsers ? users.fetch() : [],
-    profiles: profiles.fetch(),
+    profiles: gotProfiles && profiles.fetch(),
     projects: gotProjects && projects.fetch(),
   };
 }, App);
