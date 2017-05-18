@@ -26,6 +26,7 @@ class App extends Component {
     render(){
 
         let profilesProp = this.props.profiles;
+        let projectsProp = this.props.projects;
 
         return (
             <div>
@@ -33,7 +34,7 @@ class App extends Component {
                     <div>
                         <HeaderBar currentUserId={this.props.currentUserId} />
                         <Switch>
-                            <Route exact path="/" component={ProjectListContainer} />
+                            <Route exact path="/" render={() => projectsProp && <ProjectListContainer projects={projectsProp} /> } />
                             <Route path="/signup" component={CreateProfileContainer} />
                             <Route path="/createproject" component={CreateProjectContainer} />
                             <Route path="/myprojects" component={YourProjects} />
@@ -55,18 +56,22 @@ App.propTypes = {
 };
 
 export default createContainer(() => {
-  const handleUsers = Meteor.subscribe('profiles');
-  const ready = handleUsers.ready();
+  const handleProfiles = Meteor.subscribe('profiles');
+  const ready = handleProfiles.ready();
   const users = Meteor.users.find({});
   const gotUsers = ready && !!users
   const profiles = Profiles.find({});
+
+  const handleProjects = Meteor.subscribe('projects');
+  const readyProjects = handleProjects.ready();
   const projects = Projects.find({});
+  const gotProjects = readyProjects && !!projects;
 
   return {
     currentUser: Meteor.user(),
     currentUserId: Meteor.userId(),
     users: gotUsers ? users.fetch() : [],
     profiles: profiles.fetch(),
-    projects: projects.fetch()
+    projects: gotProjects && projects.fetch(),
   };
 }, App);

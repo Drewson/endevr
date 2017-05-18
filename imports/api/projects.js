@@ -1,14 +1,15 @@
 import { Mongo } from 'meteor/mongo';
+import { Meteor } from 'meteor/meteor';
 
 export const Projects = new Mongo.Collection('projects');
 
-
 if (Meteor.isServer){
 
-    Meteor.publish('projects', function projectsPublication(){
-        return Projects.find();
-    })
-
+    Meteor.publish('projects', function (){
+        return Projects.find({}, { fields: { categories: 1, imageupload: 1, payment: 1, projectdescription: 1,
+                                            projectname: 1, roles: 1, teamlocation: 1 }
+        })
+    });
 }
 
 
