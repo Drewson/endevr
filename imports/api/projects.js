@@ -25,7 +25,6 @@ Meteor.methods({
             owner: this.userId,
             ...projectInfo
         });
-
     },
 
 });

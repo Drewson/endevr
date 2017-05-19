@@ -15,7 +15,7 @@ const SingleProject = ({ project }) => {
 
       {
         project.owner !== Meteor.userId() &&
-        <Link to="/nominate"><FlatButton label='Join the Team!'></FlatButton></Link>
+        <Link to={`/nominate/${project._id}`}><FlatButton label='Join the Team!'></FlatButton></Link>
       }
 
     </Card>

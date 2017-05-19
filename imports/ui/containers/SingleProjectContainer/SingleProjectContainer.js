@@ -18,7 +18,7 @@ class SingleProjectContainer extends Component {
       <div className='content-container'>
         {
           this.props.projects.map( (project) => {
-            return project._id === this.props.match.params.projectId && <SingleProject project={project}/>
+            return project._id === this.props.match.params.projectId && <SingleProject key={project._id} project={project}/>
           })
         }
       </div>

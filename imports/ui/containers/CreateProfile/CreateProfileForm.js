@@ -188,8 +188,6 @@ class CreateProfileForm extends Gandalf {
 
         <section className='image-upload-area'>
 
-
-
           <div id='profile-image' className='profile-image-display'></div>
           <RaisedButton
             containerElement='label'

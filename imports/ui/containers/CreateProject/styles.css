@@ -2,3 +2,13 @@
   height: 170px;
   width: 350px;
 }
+
+.roles-list {
+  height: auto;
+  width: 300px;
+  padding: 10px;
+  border-radius: 3px;
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+}
