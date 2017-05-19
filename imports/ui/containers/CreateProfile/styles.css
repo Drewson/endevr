@@ -30,3 +30,13 @@ h2 {
   background: #E1E1E1;
   background-position: center bottom;
 }
+
+.skills-list {
+  height: auto;
+  width: 300px;
+  padding: 10px;
+  border: 1px solid black;
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+}

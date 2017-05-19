@@ -21,6 +21,7 @@ const SingleProject = ({ project }) => {
       <p>{project.description}</p>
 
 
+
       <Link to="/nominate" >Join the team!</Link>
 
     </Card>

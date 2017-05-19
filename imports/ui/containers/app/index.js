@@ -41,7 +41,6 @@ class App extends Component {
                             <Route path="/myprojects" render={() => projectsProp && <MyProjectsContainer projects={projectsProp} /> } />
                             <Route path="/project/:projectId" component={SingleProjectContainer} />
                             <Route path="/newprofile" component={CreateProfileSelectContainer} />
-                            <Route path="/createprofile" component={CreateProfileContainer} />
                             <Route path="/viewprofile" render={() => profilesProp && <ViewProfileContainer profiles={profilesProp} /> } />
                             <Route path="/nominate" component={Nominate} />
                             <Route path="/inviteusers" render={() => profilesProp && <UserListContainer profiles={profilesProp} /> } />

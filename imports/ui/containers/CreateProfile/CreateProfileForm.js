@@ -5,6 +5,8 @@ import {Link} from 'react-router-dom';
 import Gandalf from 'gandalf-validator';
 
 import RaisedButton from 'material-ui/RaisedButton';
+import { Card, CardTitle } from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 
 import { Input } from 'semantic-ui-react';
@@ -12,12 +14,26 @@ import { Input } from 'semantic-ui-react';
 
 import styles from './styles.css';
 
+
+const skillsCardStyles = {
+  height: '40px',
+  width: '60px',
+  margin: '5px',
+  display: 'flex',
+  flexFlow: 'row wrap',
+  justifyContent: 'center',
+  alignItems: 'center'
+}
+
+const skillStyles = {
+  height: '100%',
+  width: '100%',
+  fontSize: '10px',
+  color: '#E1E1E1'
+}
+
 class CreateProfileForm extends Gandalf {
   constructor() {
-
-    const state = {
-      pictures: {}
-    }
 
     const fields = [
       {
@@ -64,6 +80,7 @@ class CreateProfileForm extends Gandalf {
         name: 'skills',
         component: TextField,
         validators: ['required'],
+        onChangeHandler: (e, value) => value,
         errorPropName: 'errorText',
         props: {
           hintText: 'Enter Your Areas of Expertise',
@@ -76,7 +93,7 @@ class CreateProfileForm extends Gandalf {
         validators: ['required'],
         errorPropName: 'errorText',
         props: {
-          hintText: 'Enter Your Areas of Expertise',
+          hintText: 'Enter Your Email Address',
         },
         debounce: 300
       },
@@ -93,6 +110,8 @@ class CreateProfileForm extends Gandalf {
     ]
 
     super(fields);
+
+    this.skillsList = [];
   }
 
   handleSubmit() {
@@ -108,9 +127,11 @@ class CreateProfileForm extends Gandalf {
     reader.onload = e => {
       let newData = {...data};
       newData.imageupload = e.target.result;
+      newData.skills = this.skillsList;
+
+      console.log(newData);
 
       Meteor.call('profiles.addProfile', newData);
-      console.log('creating user');
 
     }
 
@@ -133,7 +154,17 @@ class CreateProfileForm extends Gandalf {
 
   }
 
+  addSkillToList(skill) {
+    if(skill) this.skillsList.push(skill);
+
+    document.getElementById('skills-input').value = '';
+
+    this.forceUpdate();
+  }
+
   render() {
+
+    console.log('rendering');
 
     const fields = this.state.fields;
 
@@ -153,8 +184,24 @@ class CreateProfileForm extends Gandalf {
         { fields.name.element } <br />
         { fields.bio.element } <br />
         { fields.location.element } <br />
-        <div className='skills-list'></div> <br />
-        { fields.skills.element } <br />
+
+        <section className='skills-list-area'>
+
+          <ul className='skills-list'>
+            {
+              this.skillsList.map( (skill) => {
+                return <Card style={skillsCardStyles}><li style={skillStyles}>{skill}</li></Card>
+              })
+            }
+          </ul> <br />
+          <TextField id='skills-input' hintText='Enter Your Skills'/> <br />
+          <FlatButton
+            label={'Add a Skill'}
+            onTouchTap={() => this.addSkillToList(document.getElementById('skills-input').value)}
+          />
+        </section>
+
+
         { fields.email.element } <br />
         { fields.socialLinks.element } <br />
         <Link to='/viewprofile' >
