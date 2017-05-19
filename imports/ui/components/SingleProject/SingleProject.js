@@ -12,7 +12,6 @@ const SingleProject = ({ project }) => {
       <CardTitle title={project.title} style={{textAlign: 'center'}} />
       <h2>{project.owner}</h2>
       <p>{project.description}</p>
-      <p>{project.owner}/////////{Meteor.userId()}</p>
 
       {
         project.owner !== Meteor.userId() &&
