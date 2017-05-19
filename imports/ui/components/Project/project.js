@@ -7,7 +7,6 @@ import FlatButton from 'material-ui/FlatButton';
 import Chip from 'material-ui/Chip';
 
 const Project = ({ project }) => {
-
     return (
         <Link to={`/project/${project._id}`}>
             <Card>

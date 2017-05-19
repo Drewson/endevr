@@ -1,6 +1,7 @@
 import React from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import Gandalf from 'gandalf-validator';
+import {Link} from 'react-router-dom';
 
 import { Card, CardMedia } from 'material-ui/Card';
 import SelectField from 'material-ui/SelectField';
@@ -129,6 +130,7 @@ class CreateProjectForm extends Gandalf {
 
     reader.onload = e => {
       let newData = {...data};
+      newData.date = Date.now();
       newData.imageupload = e.target.result;
 
       Meteor.call('projects.addProject', newData);
@@ -180,12 +182,13 @@ class CreateProjectForm extends Gandalf {
           <h4>Select a Category</h4>
           { fields.payment.element }
         </div>
-
-        <RaisedButton
-          label='Submit'
-          onTouchTap={() => this.handleSubmit()}
-        >
-        </RaisedButton>
+        <Link to='/' >
+          <RaisedButton
+            label='Submit'
+            onTouchTap={() => this.handleSubmit()}
+          >
+          </RaisedButton>
+        </Link>
       </form>
     );
   }
