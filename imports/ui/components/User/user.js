@@ -4,20 +4,24 @@ import 'url-search-params-polyfill';
 import FlatButton from 'material-ui/FlatButton';
 import Chip from 'material-ui/Chip';
 
-const User = (profile) => {
+import { Link } from 'react-router-dom';
+
+const User = ({ profile }) => {
     return (
-        <Card>
-            <CardTitle title={profile.profile.name} />
-            <CardHeader
-            title="Test"
-            />
-            <p>{profile.profile.bio}</p>
-            <p>{profile.profile.skills}</p>
-            <p>{profile.profile.email}</p>
-            <p>{profile.profile.location}</p>
-            <p>{profile.profile.sociallinks}</p>
-            <img src={profile.profile.imageupload} style={{maxWidth:'450px', maxHeight:'450px'}} />
-        </Card>
+        <Link to={`/users/${profile._id}`}>
+            <Card>
+                <CardTitle title={profile.name} />
+                <CardHeader
+                    title="Test"
+                />
+                <p>{profile.bio}</p>
+                <p>{profile.skills}</p>
+                <p>{profile.email}</p>
+                <p>{profile.location}</p>
+                <p>{profile.sociallinks}</p>
+                <img src={profile.imageupload} style={{maxWidth:'450px', maxHeight:'450px'}} />
+            </Card>
+        </Link>
     )
 }
 

@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import { Template } from 'meteor/templating';
 import { Blaze } from 'meteor/blaze';
+
+import FlatButton from 'material-ui/FlatButton';
+
 import './style.css';
 
 export default class AccountsUIWrapper extends Component {
@@ -17,7 +20,6 @@ export default class AccountsUIWrapper extends Component {
     return (
       <div>
         <span ref="container" />
-        <Link to='/signup'>Create Profile</Link>
       </div>
     );
   }

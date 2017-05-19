@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 
-import { Profiles } from '../../../api/profiles';
-
 import Profile from './Profile';
 
 class ViewProfileContainer extends Component {
@@ -21,7 +19,7 @@ class ViewProfileContainer extends Component {
         {
           this.props.profiles.map( (profile) => {
 
-            return profile._id === this.props.match.params.userId ? <Profile profile={profile} key={profile._id} /> : false;
+            return profile._id === Meteor.userId() ? <Profile profile={profile} key={profile._id} /> : false;
           })
         }
       </div>
@@ -29,14 +27,4 @@ class ViewProfileContainer extends Component {
   }
 }
 
-export default createContainer(() => {
-
-  const handleProfiles = Meteor.subscribe('profiles');
-  const readyProfiles = handleProfiles.ready();
-  const profiles = Profiles.find({});
-  const gotProfiles = readyProfiles && !!profiles;
-
-  return {
-    profiles: profiles.fetch()
-  }
-}, ViewProfileContainer)
+export default ViewProfileContainer;

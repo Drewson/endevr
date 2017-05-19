@@ -1,8 +1,10 @@
 import { createContainer } from 'meteor/react-meteor-data';
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 import FlatButton from 'material-ui/FlatButton';
 import AppBar from 'material-ui/AppBar';
+
 import AccountsUIWrapper from '../AccountsUiWrapper/index';
 
 const HeaderBar = ({ currentUserId }) =>  (
@@ -17,6 +19,10 @@ const HeaderBar = ({ currentUserId }) =>  (
         </Link>
         { currentUserId &&
           <Link to='/myprojects'><FlatButton label="MyProjects" style={{color:'white'}} /></Link>
+        }
+        {
+          !!currentUserId &&
+          <Link to='/signup'><FlatButton style={{color: 'white'}} label='Create Profile'/></Link>
         }
       </div>
     }

@@ -4,6 +4,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import {Link} from 'react-router-dom';
 import Gandalf from 'gandalf-validator';
 
+import Avatar from 'material-ui/Avatar';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Card, CardTitle } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
@@ -29,7 +30,7 @@ const skillStyles = {
   height: '100%',
   width: '100%',
   fontSize: '10px',
-  color: '#E1E1E1'
+  color: '#A1A1A1'
 }
 
 class CreateProfileForm extends Gandalf {
@@ -40,10 +41,23 @@ class CreateProfileForm extends Gandalf {
         name: 'imageupload',
         component: Input,
         validators: ['required'],
+        // onChange: () => {
+
+        //   if( this.state.fields.imageupload.value && document.getElementById('profile-image') ) {
+
+        //     let file = document.getElementById('image-uploader').files[0];
+
+        //     let reader = new FileReader();
+
+        //     reader.onload = e =>  document.getElementById('profile-image').style.background = `url(${e.target.result})`;
+
+        //     reader.readAsDataURL(file);
+        //   }
+        // },
         props: {
           style: {display: 'none'},
           type: 'file',
-          id: 'image-uploader',
+          id: 'image-uploader'
         }
       },
       {
@@ -103,7 +117,7 @@ class CreateProfileForm extends Gandalf {
         validators: [],
         errorPropName: 'errorText',
         props: {
-          hintText: 'Enter A Link to Your Social Media Profile',
+          hintText: 'Enter Your LinkedIn Profile',
         },
         debounce: 300
       }
@@ -147,7 +161,7 @@ class CreateProfileForm extends Gandalf {
 
       let reader = new FileReader();
 
-      reader.onload = e =>  document.getElementById('profile-image').style.background = `url(${e.target.result})`;
+      reader.onload = e =>  document.getElementById('profile-image').style.background = `url(${e.target.result}) no-repeat center / cover`;
 
       reader.readAsDataURL(file);
     }
@@ -173,12 +187,16 @@ class CreateProfileForm extends Gandalf {
         <h2>Create Your Profile</h2>
 
         <section className='image-upload-area'>
+
+
+
           <div id='profile-image' className='profile-image-display'></div>
           <RaisedButton
             containerElement='label'
             label='Add an Image'>
               { fields.imageupload.element }
           </RaisedButton>
+
         </section>
 
         { fields.name.element } <br />

@@ -15,6 +15,7 @@ import SingleProjectContainer from '../SingleProjectContainer/SingleProjectConta
 import CreateProfileContainer from '../CreateProfile/CreateProfileContainer';
 import CreateProfileSelectContainer from '../CreateProfileSelectPage/CreateProfileSelectContainer';
 import ViewProfileContainer from '../ViewProfile/ViewProfileContainer';
+import YourProfileContainer from '../ViewProfile/YourProfileContainer';
 import CreateProjectContainer from '../CreateProject/CreateProjectContainer';
 import UserListContainer from '../UserList/UserListContainer';
 import Nominate from '../Nominate/Nominate';
@@ -41,9 +42,10 @@ class App extends Component {
                             <Route path="/myprojects" render={() => projectsProp && <MyProjectsContainer projects={projectsProp} /> } />
                             <Route path="/project/:projectId" component={SingleProjectContainer} />
                             <Route path="/newprofile" component={CreateProfileSelectContainer} />
-                            <Route path="/viewprofile" render={() => profilesProp && <ViewProfileContainer profiles={profilesProp} /> } />
+                            <Route path="/viewprofile" render={() => profilesProp && <YourProfileContainer profiles={profilesProp} /> } />
                             <Route path="/nominate" component={Nominate} />
                             <Route path="/inviteusers" render={() => profilesProp && <UserListContainer profiles={profilesProp} /> } />
+                            <Route path="/users/:userId" component={ViewProfileContainer} />
                         </Switch>
                     </div>
                 </Router>

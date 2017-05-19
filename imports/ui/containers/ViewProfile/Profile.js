@@ -11,7 +11,8 @@ const Profile = ({ profile }) => {
 
   const avatarStyles = {
     height: '180px',
-    width: '180px'
+    width: '180px',
+    boxShadow: '0px 4px 10px -2px rgba(209,209,209,1)'
   }
 
   return (
