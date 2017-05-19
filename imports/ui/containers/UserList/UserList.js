@@ -6,7 +6,10 @@ const UserList = ({ profiles }) => {
   return(
         <div>
           {
-            profiles.map(profile => <User profile={profile} key={profile._id} />)
+            profiles.map(profile => {
+              console.log(profile);
+              return <User profile={profile} key={profile._id} />
+              })
           }
         </div>
     )
