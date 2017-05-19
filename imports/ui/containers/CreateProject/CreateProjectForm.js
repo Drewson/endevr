@@ -93,7 +93,7 @@ class CreateProjectForm extends Gandalf {
       {
         name: 'roles',
         component: TextField,
-        validators: ['required'],
+        validators: [],
         errorPropName: 'errorText',
         props: {
           hintText: 'What Roles Are You Looking To Fill?',
@@ -148,6 +148,8 @@ class CreateProjectForm extends Gandalf {
     reader.readAsDataURL(file);
 
     let realPath = 'string';
+
+    console.log(data);
 
     reader.onload = e => {
       let newData = {...data};

@@ -93,7 +93,7 @@ class CreateProfileForm extends Gandalf {
       {
         name: 'skills',
         component: TextField,
-        validators: ['required'],
+        validators: [],
         onChangeHandler: (e, value) => value,
         errorPropName: 'errorText',
         props: {
