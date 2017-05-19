@@ -20,8 +20,10 @@ import CreateProjectContainer from '../CreateProject/CreateProjectContainer';
 import UserListContainer from '../UserList/UserListContainer';
 import NominateContainer from '../Nominate/NominateContainer';
 import HeaderBar from '../../components/HeaderBar';
+
 import { Profiles } from '../../../api/profiles';
 import { Projects } from '../../../api/projects';
+import { Nominations } from '../../../api/nominations';
 
 class App extends Component {
 
@@ -70,9 +72,15 @@ export default createContainer(() => {
   const projects = Projects.find({});
   const gotProjects = readyProjects && !!projects;
 
+  const handleNominations = Meteor.subscribe('nominations');
+  const readyNominations = handleNominations.ready();
+  const nominations = Nominations.find({});
+  const gotNominations = readyNominations && !!nominations;
+
   return {
     currentUserId: Meteor.userId(),
     profiles: gotProfiles && profiles.fetch(),
     projects: gotProjects && projects.fetch(),
+    nominations: gotNominations && nominations.fetch(),
   };
 }, App);
