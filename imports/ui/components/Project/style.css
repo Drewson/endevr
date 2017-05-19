@@ -1,0 +1,43 @@
+.project{
+  border: 2px solid green;
+  margin-bottom: 10px;
+  position: relative;
+  height: 200px;
+}
+
+.projectImage {
+  height: 196px;
+  /*max-height: 195px;*/
+  width: 300px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  display: inline-block;
+  overflow: hidden;
+  border-left: 5px solid green;
+
+}
+
+.projectImage img{
+  max-height: 100%;
+}
+
+.projectInfo {
+  display: flex;
+  /*justify-content: center;*/
+  flex-wrap: wrap;
+  width: 70%;
+  padding: 0 15px;
+  text-align: center;
+}
+
+.projectDescription {
+  font-family: sans-serif;
+  flex-basis: 100%;
+}
+
+/*.projectCategories {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}*/

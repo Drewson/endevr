@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PostList from './ProjectList';
 import { Link } from 'react-router-dom';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import './styles.css';
 
 import RaisedButton from 'material-ui/RaisedButton';
 
@@ -43,15 +46,18 @@ class ProjectListContainer extends Component {
 
     render(){
         return(
-            <div style={{margin: '30px 100px'}}>
-              <Link to='/createproject' >
-                <RaisedButton label="Create Project" style={{width:'100%', bakcground:'blue'}} />
+            <div style={{margin: '50px 100px'}}>
+              <Link to='/createproject' className='createProject' style={{ textDecoration: 'none' }} >
+                <p style={{display:'inline-block'}}>Create Project: </p>
+                <FloatingActionButton backgroundColor='black'>
+                    <ContentAdd />
+                </FloatingActionButton>
               </Link>
               <div className='sorter'>
                 <p>Sort By: </p>
-                <RaisedButton label="Date" onClick={() => this.sortByDate()} />
-                <RaisedButton label="Paid/Unpaid" onClick={() => this.sortByPaid()} />
-                <RaisedButton label="Category" onClick={() => this.sortByCategory()} />
+                <RaisedButton className='sortButton' label="Date" onClick={() => this.sortByDate()} />
+                <RaisedButton className='sortButton' label="Paid/Unpaid" onClick={() => this.sortByPaid()} />
+                <RaisedButton className='sortButton' label="Category" onClick={() => this.sortByCategory()} />
               </div>
               <PostList projects={this.state.projects} />
             </div>
