@@ -26,17 +26,6 @@ Meteor.methods({
             ...projectInfo
         });
 
-        console.log(Projects.find().fetch());
     },
-
-    // 'projects.getSingleProject' (projectId) {
-    //     if(!projectId) {
-    //         throw new Meteor.Error('no project ID provided')
-    //     }
-
-    //     const theProject = Projects.find({_id: projectId}).fetch();
-
-    //     return theProject;
-    // }
 
 });
