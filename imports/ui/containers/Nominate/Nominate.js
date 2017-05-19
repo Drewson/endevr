@@ -39,12 +39,14 @@ const Nominate = ({ project }) => {
                 <select
                     name='select'
                     onChange={(event) => addRoleToList(event)}
+
                 >
                 {
                     project.roles.map(role => (
                         <option
                             key={role + Date.now()}
                             value={role}
+                            // {selected = role.value ===  ? true : false}
                         >
                             {role}
                         </option>
