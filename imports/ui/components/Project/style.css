@@ -8,7 +8,7 @@
 .projectImage {
   height: 196px;
   /*max-height: 195px;*/
-  width: 300px;
+  width: 280px;
   position: absolute;
   right: 0px;
   top: 0px;
@@ -44,4 +44,18 @@
 
 h4 {
   display: inline-block;
+  margin: 5px;
+  text-decoration: underline;
+}
+
+.roles {
+  position: absolute;
+  right: 330px;
+  bottom: 10px;
+}
+
+.roles ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
