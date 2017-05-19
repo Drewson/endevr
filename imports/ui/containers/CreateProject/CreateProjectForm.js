@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import { Card, CardMedia } from 'material-ui/Card';
 import SelectField from 'material-ui/SelectField';
 import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
@@ -14,12 +15,30 @@ import TextField from 'material-ui/TextField';
 import { Input } from 'semantic-ui-react';
 
 
-// import styles from './styles.css';
+import styles from './styles.css';
 
 const projectImageStyles = {
   height: '220px',
   width: '300px',
   marginRight: '50px',
+  background: 'radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 26%, rgba(247,247,247,1) 100%)'
+}
+
+const rolesCardStyles = {
+  height: '40px',
+  width: '60px',
+  margin: '5px',
+  display: 'flex',
+  flexFlow: 'row wrap',
+  justifyContent: 'center',
+  alignItems: 'center'
+}
+
+const roleStyles = {
+  height: '100%',
+  width: '100%',
+  fontSize: '10px',
+  color: '#A1A1A1'
 }
 
 class CreateProjectForm extends Gandalf {
@@ -110,6 +129,8 @@ class CreateProjectForm extends Gandalf {
     ]
 
     super(fields);
+
+    this.rolesList = [];
   }
 
   componentDidMount() {
@@ -132,8 +153,11 @@ class CreateProjectForm extends Gandalf {
       let newData = {...data};
       newData.date = Date.now();
       newData.imageupload = e.target.result;
+      newData.roles = this.rolesList;
 
       Meteor.call('projects.addProject', newData);
+
+      console.log(newData);
     }
 
     if(!data) return;
@@ -142,7 +166,7 @@ class CreateProjectForm extends Gandalf {
 
   componentDidUpdate() {
 
-    if(this.state.fields.imageupload.value) {
+    if(this.state.fields.imageupload.value && document.getElementById('project-image') !== undefined) {
 
       let file = document.getElementById('image-uploader').files[0];
 
@@ -153,6 +177,14 @@ class CreateProjectForm extends Gandalf {
       reader.readAsDataURL(file);
 
     }
+  }
+
+  addRoleToList(role) {
+    if(role) this.rolesList.push(role);
+
+    document.getElementById('roles-input').value = '';
+
+    this.forceUpdate();
   }
 
   render() {
@@ -175,8 +207,25 @@ class CreateProjectForm extends Gandalf {
         { fields.projectname.element } <br />
         { fields.projectdescription.element } <br />
         { fields.teamlocation.element } <br />
-        <div className='roles-list'></div> <br />
-        { fields.roles.element } <br />
+
+
+        <section className='roles-list-area'>
+
+          <ul className='roles-list'>
+            {
+              this.rolesList.map( (role) => {
+                return <Card style={rolesCardStyles}><li style={roleStyles}>{role}</li></Card>
+              })
+            }
+          </ul> <br />
+          <TextField id='roles-input' hintText='Who Are You Looking For?'/> <br />
+          <FlatButton
+            label={'Add a Role'}
+            onTouchTap={() => this.addRoleToList(document.getElementById('roles-input').value)}
+          />
+
+        </section>
+
         { fields.categories.element } <br />
         <div className="payment-select-area">
           <h4>Select a Category</h4>

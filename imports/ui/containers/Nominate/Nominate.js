@@ -6,14 +6,16 @@ import RaisedButton from 'material-ui/RaisedButton';
 import Subheader from 'material-ui/Subheader';
 
 
-const Nominate = () => {
+const Nominate = ({ project }) => {
     return(
         <div style={{display: 'flex', justifyContent:'center', flexWrap:'wrap', width:'80%', margin:'0 auto'}}>
             <List style={{flexBasis: '100%'}}>
-                <Subheader>Position Interested In: </Subheader>
-                this.props.roles.map(role => (
-                    <ListItem>test role</ListItem>
-                ))
+                <Subheader>Which Positions Are You Interested In?:</Subheader>
+                {
+                    project.roles.map(role => (
+                        <ListItem>{role}</ListItem>
+                    ))
+                }
             </List>
             <TextField
                 style={{flexBasis: '100%'}}
