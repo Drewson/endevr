@@ -233,7 +233,7 @@ class CreateProjectForm extends Gandalf {
           <h4>Select a Category</h4>
           { fields.payment.element }
         </div>
-        <Link to='/' >
+        <Link to='/' onClick={() => this.forceUpdate()}>
           <RaisedButton
             label='Submit'
             onTouchTap={() => this.handleSubmit()}

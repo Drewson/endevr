@@ -24,7 +24,7 @@
 
 .projectInfo {
   display: flex;
-  /*justify-content: center;*/
+  justify-content: center;
   flex-wrap: wrap;
   width: 70%;
   padding: 0 15px;
@@ -36,8 +36,12 @@
   flex-basis: 100%;
 }
 
-/*.projectCategories {
+.projectCategory {
   position: absolute;
   bottom: 10px;
   left: 10px;
-}*/
+}
+
+h4 {
+  display: inline-block;
+}
