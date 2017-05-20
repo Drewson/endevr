@@ -41,18 +41,23 @@ class CreateProfileForm extends Gandalf {
         name: 'imageupload',
         component: Input,
         validators: ['required'],
-        // onChange: () => {
+        // getValueInOnChange: (e) => {
+        //   // update
 
         //   if( this.state.fields.imageupload.value && document.getElementById('profile-image') ) {
+
+        //     console.log('Doin Thangs');
 
         //     let file = document.getElementById('image-uploader').files[0];
 
         //     let reader = new FileReader();
 
-        //     reader.onload = e =>  document.getElementById('profile-image').style.background = `url(${e.target.result})`;
+        //     reader.onload = e =>  document.getElementById('profile-image').style.background = `url(${e.target.result}) no-repeat center / cover`;
 
         //     reader.readAsDataURL(file);
         //   }
+
+        //   return e.target.value;
         // },
         props: {
           style: {display: 'none'},
@@ -143,8 +148,6 @@ class CreateProfileForm extends Gandalf {
       newData.imageupload = e.target.result;
       newData.skills = this.skillsList;
 
-      console.log(newData);
-
       Meteor.call('profiles.addProfile', newData);
 
     }
@@ -177,8 +180,6 @@ class CreateProfileForm extends Gandalf {
   }
 
   render() {
-
-    console.log('rendering');
 
     const fields = this.state.fields;
 

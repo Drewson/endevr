@@ -17,9 +17,8 @@ class NominateContainer extends Component {
       <div>
       {
         this.props.projects.map((project) => {
-          return project._id === this.props.match.params.projectId ?
-            <Nominate project={project} /> :
-            <h2>Sorry, this project doesn't exist...</h2>
+          return project._id === this.props.match.params.projectId &&
+            <Nominate project={project} />
         })
       }
       </div>

@@ -10,42 +10,46 @@ import ContentFilter from 'material-ui/svg-icons/content/filter-list';
 import MenuItem from 'material-ui/MenuItem';
 import './styles.css';
 
+import { Projects } from '../../../api/projects';
+
+import { createContainer } from 'meteor/react-meteor-data';
+
 import RaisedButton from 'material-ui/RaisedButton';
 
 class ProjectListContainer extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      projects: props.projects
-    };
+  constructor() {
+    super();
+    // this.state = {
+    //   projects: props.projects
+    // };
   }
 
     sortByCategory(){
       let category = [];
-      this.state.projects.map(project => category.push(project.categories));
+      this.props.projects.map(project => category.push(project.categories));
       category.sort();
-      let orderedProjects = this.state.projects;
-      orderedProjects.map((project, i) => project.categories = category[i] );
-      console.log(orderedProjects);
+      let orderedProjects = this.props.projects;
+      let newOrder = orderedProjects.map((project, i) => project.categories = category[i] );
+      console.log(newOrder);
 
-      this.setState((prevState, props) => {
-        return { projects: orderedProjects}
-      });
+      // this.setState((prevState, props) => {
+      //   return { projects: orderedProjects}
+      // });
     }
 
     sortByPaid(){
-      this.setState((prevState, props) => {
-        return { projects: prevState.projects.sort((a, b) => a.payment === "paid")}
-      });
+      // this.setState((prevState, props) => {
+      //   return { projects: prevState.projects.sort((a, b) => a.payment === "paid")}
+      // });
 
     }
 
     sortByDate(){
 
-      this.setState((prevState, props) => {
-        return { projects: prevState.projects.sort((a, b) => a.date - b.date) };
-      });
+      // this.setState((prevState, props) => {
+      //   return { projects: prevState.projects.sort((a, b) => a.date - b.date) };
+      // });
 
     }
 
@@ -72,10 +76,22 @@ class ProjectListContainer extends Component {
                 </FloatingActionButton>
               </Link>
               </div>
-              <PostList projects={this.state.projects} />
+              <PostList projects={this.props.projects} />
             </div>
         )
     }
 }
 
-export default ProjectListContainer;
+export default createContainer((incomingProps) => {
+
+  const handleProjects = Meteor.subscribe('projects');
+  const readyProjects = handleProjects.ready();
+  const projects = Projects.find({});
+  const gotProjects = readyProjects && !!projects;
+
+
+  return {
+    projects: gotProjects ? projects.fetch() : []
+  }
+
+}, ProjectListContainer);
