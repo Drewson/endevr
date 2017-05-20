@@ -8,7 +8,6 @@ import Chip from 'material-ui/Chip';
 import './style.css';
 
 const Project = ({ project }) => {
-    console.log(project.roles)
     return (
         <Link to={`/project/${project._id}`} style={{ textDecoration: 'none' }}>
             <Card className='project' >

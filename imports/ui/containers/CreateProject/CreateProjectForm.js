@@ -216,7 +216,7 @@ class CreateProjectForm extends Gandalf {
           <ul className='roles-list'>
             {
               this.rolesList.map( (role) => {
-                return <Card style={rolesCardStyles}><li style={roleStyles}>{role}</li></Card>
+                return <Card style={rolesCardStyles}><li key={Date.now() + role} style={roleStyles}>{role}</li></Card>
               })
             }
           </ul> <br />

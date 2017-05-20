@@ -18,13 +18,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 class ProjectListContainer extends Component {
 
-  constructor() {
-    super();
-    // this.state = {
-    //   projects: props.projects
-    // };
-  }
-
     sortByCategory(){
       let category = [];
       this.props.projects.map(project => category.push(project.categories));
@@ -32,17 +25,17 @@ class ProjectListContainer extends Component {
       let orderedProjects = this.props.projects;
       let newOrder = orderedProjects.map((project, i) => project.categories = category[i] );
       console.log(newOrder);
-
-      // this.setState((prevState, props) => {
-      //   return { projects: orderedProjects}
-      // });
+      this.props.projects = newOrder;
+      this.forceUpdate();
     }
 
     sortByPaid(){
       // this.setState((prevState, props) => {
       //   return { projects: prevState.projects.sort((a, b) => a.payment === "paid")}
       // });
-
+      this.props.projects = this.props.projects.sort((a, b) => a.payment === "paid");
+      this.forceUpdate();
+      console.log(this.props.projects)
     }
 
     sortByDate(){
@@ -50,7 +43,9 @@ class ProjectListContainer extends Component {
       // this.setState((prevState, props) => {
       //   return { projects: prevState.projects.sort((a, b) => a.date - b.date) };
       // });
-
+      this.props.projects = this.props.projects.sort((a, b) => a.date - b.date);
+      this.forceUpdate();
+      console.log(this.props.projects)
     }
 
     render(){
