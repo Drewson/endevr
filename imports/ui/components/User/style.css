@@ -1,0 +1,30 @@
+.user {
+  position: relative;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  background: black;
+}
+
+.userLeft{
+  flex-basis: 100%;
+  width: 30%;
+}
+
+.userCenter{
+  flex-basis: 100%;
+  width: 30%;
+}
+
+.userRight{
+  flex-basis: 10%;
+  justify-content: center;
+  width: 30%;
+}
+
+/*.addUser{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}*/
