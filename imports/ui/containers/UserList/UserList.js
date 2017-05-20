@@ -7,9 +7,8 @@ const UserList = ({ profiles }) => {
         <div>
           {
             profiles.map(profile => {
-              console.log(profile);
               return <User profile={profile} key={profile._id} />
-              })
+            })
           }
         </div>
     )
