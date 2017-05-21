@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Meteor } from 'meteor/meteor';
-
+import './style';
 import Project from '../../components/Project/project';
 
 class MyProjectsContainer extends Component {
@@ -12,8 +12,8 @@ class MyProjectsContainer extends Component {
   render() {
 
     return(
-      <div className='content-container'>
-        <h2>Your Projects</h2>
+      <div className='myProjects'>
+        <h2>My Projects</h2>
 
         {
           this.props.projects.map( (project) => {

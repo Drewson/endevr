@@ -18,7 +18,7 @@ const Project = ({ project }) => {
                         <h4>Roles Needed: </h4>
                         <ul>
                         {
-                            project.roles.map(role => <li>{role}</li>)
+                            project.roles.map((role, i) => <li key={i}>{role}</li>)
                         }
                         </ul>
                     </div>

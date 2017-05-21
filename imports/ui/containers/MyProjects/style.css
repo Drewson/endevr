@@ -1,0 +1,12 @@
+.myProjects{
+  margin: 0 10%;
+}
+
+h2 {
+  text-transform: uppercase;
+  font-family: sans-serif;
+  background: green;
+  color: white;
+  margin-bottom: 0!important;
+  padding: 5px 0;
+}
