@@ -1,3 +1,7 @@
+.content-wrapper {
+    margin: 40px 100px;
+}
+
 .projectList {
     width: 50%;
     padding: 50px;
@@ -33,6 +37,7 @@
     display: flex;
     align-items: flex-end;
     border: 2px solid green;
+    border-radius: 5px 5px 0 0;
     background: green;
     color: white;
 }
@@ -42,18 +47,11 @@
     display: inline-block;
     font-family: sans-serif;
     text-transform: uppercase;
-    /*background: green;*/
     padding: 15px 2px;
-    /*color: white;
-    border-radius: 3px;*/
 }
 
 .sortButton {
     border: 2px solid green;
-}
-
-.sortButton:hover {
-    /*background-color:red!important;*/
 }
 
 .sortme {

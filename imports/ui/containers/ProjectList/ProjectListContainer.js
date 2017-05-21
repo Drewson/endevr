@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
-import PostList from './ProjectList';
 import { Link } from 'react-router-dom';
+import { createContainer } from 'meteor/react-meteor-data';
+
 import FloatingActionButton from 'material-ui/FloatingActionButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import Menu from 'material-ui/Menu';
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
 import ContentFilter from 'material-ui/svg-icons/content/filter-list';
 import MenuItem from 'material-ui/MenuItem';
+
+import PostList from './ProjectList';
+
 import './styles.css';
 
 import { Projects } from '../../../api/projects';
 
-import { createContainer } from 'meteor/react-meteor-data';
 
-import RaisedButton from 'material-ui/RaisedButton';
 
 class ProjectListContainer extends Component {
 
@@ -50,7 +53,7 @@ class ProjectListContainer extends Component {
 
     render(){
         return(
-            <div style={{margin: '40px 100px'}}>
+            <div className='content-wrapper'>
 
               <div className='sorter'>
                 <span className='sortme'>
