@@ -58,14 +58,14 @@ h4 {
   display: inline-block;
   /*margin: 5px;*/
   text-transform: uppercase;
-  text-decoration: none;
+  /*text-decoration: none;*/
 }
 
 p{
   margin: 2px;
 }
 
-h3{
+.user h3{
   background: green;
   border-radius: 5px;
   color: white;

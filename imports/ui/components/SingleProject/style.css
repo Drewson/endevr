@@ -1,0 +1,58 @@
+.singleProject{
+  width: 75%;
+  margin: 20px auto;
+  position: relative;
+  flex-wrap: wrap;
+  /*border: 2px solid black;*/
+  /*padding: 0 20px 50px 20px;*/
+}
+
+.singleProject h2{
+  width: 100%;
+  text-align: center;
+  background: green;
+  padding: 5px;
+  color: white;
+  font-weight: 300;
+  margin-bottom: 0px;
+}
+
+.singleProject h4{
+  display: inline-block;
+  margin: 5px 0 5px 0;
+  margin-top: 15px;
+  text-decoration: none;
+}
+
+.singleProject ul{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.projectContent{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  padding: 20px 0;
+}
+
+.projectDescription{
+  padding: 0 0 40px 20px;
+  display: inline-block;
+  flex-basis: 60%;
+}
+
+.singleProjectInfo {
+  padding-left: 20px;
+  text-align: left;
+  display: inline-block;
+  flex-basis: 20%;
+  border-right: 2px solid green;
+}
+
+.join{
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}

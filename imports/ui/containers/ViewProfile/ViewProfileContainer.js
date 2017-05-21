@@ -15,7 +15,7 @@ class ViewProfileContainer extends Component {
 
   render() {
     return(
-      <div className='content-container'>
+      <div className='content-container' style={{width:'80%!important'}}>
         <h2>Your Profile</h2>
 
         {

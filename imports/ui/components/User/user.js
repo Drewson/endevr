@@ -11,7 +11,6 @@ import './style.css';
 import { Link } from 'react-router-dom';
 
 const User = ({ profile }) => {
-    console.log(profile.skills.join(', '))
     return (
         <Link to={`/users/${profile._id}`} style={{textDecoration:'none'}}>
             <Card className='user' containerStyle={{display:'flex', height:'100%'}}>

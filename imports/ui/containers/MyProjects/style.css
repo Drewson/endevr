@@ -2,9 +2,10 @@
   margin: 0 10%;
 }
 
-h2 {
+.myProjects h2 {
   text-transform: uppercase;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif!important;
+  font-weight: 300;
   background: green;
   color: white;
   margin-bottom: 0!important;

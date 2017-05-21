@@ -13,6 +13,7 @@ import muiTheme from './mui-theme';
 
 // Needed for Material Ui onTouchTap prop to work
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import './main.css';
 
 Meteor.startup(() => {
 

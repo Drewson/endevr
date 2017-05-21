@@ -16,7 +16,7 @@ const Profile = ({ profile }) => {
   }
 
   return (
-    <div>
+    <div style={{paddingTop:'15px'}}>
       <section className='profile-header-area'>
 
         {
@@ -29,7 +29,8 @@ const Profile = ({ profile }) => {
             ) : ( <Avatar style={avatarStyles}></Avatar> )
         }
 
-        <h3>Name:<span>{ profile.name }</span></h3>
+        <h3>Name:</h3>
+        <p>{ profile.name }</p>
       </section>
       <section className='profile-main-section'>
         <h3>Bio:</h3>
@@ -37,9 +38,7 @@ const Profile = ({ profile }) => {
         <h3>Location:</h3>
         <p className='location-text'>{ profile.location }</p>
         <h3>Skills:</h3>
-
-        <h3>Projects:</h3>
-
+        <p>{profile.skills.join(', ')}</p>
         <h3>Email:</h3>
         <p className='email-text'>{ profile.email }</p>
         <h3>Social:</h3>
