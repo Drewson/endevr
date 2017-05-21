@@ -11,28 +11,28 @@ import './style.css';
 import { Link } from 'react-router-dom';
 
 const User = ({ profile }) => {
+    console.log(profile.skills.join(', '))
     return (
         <Link to={`/users/${profile._id}`} style={{textDecoration:'none'}}>
-            <Card className='user' containerStyle={{display:'flex', justifyContent:'center', alignItems:'center'}}>
+            <Card className='user' containerStyle={{display:'flex', height:'100%'}}>
                 <div className='userLeft'>
-                    <Avatar src={profile.imageupload} size={200} />
-                    <CardTitle title={profile.name} />
-                    <CardHeader
-                        title={profile.email}
-                    />
-                    <p>Location: {profile.location}</p>
+                    <Avatar src={profile.imageupload} size={120} />
+                    <div style={{height:'100%'}}>
+                        <h3>{profile.name}</h3>
+                        <h4>Email: </h4>
+                        <p>{profile.email}</p>
+                        <h4>Location: </h4>
+                        <p>{profile.location}</p>
+                    </div>
                 </div>
                 <div className='userCenter'>
+                    <h4>Bio: </h4>
                     <p>{profile.bio}</p>
-                    <p>Skills: </p>
-                    <ul>
-                        {
-                            profile.skills.map(skill => <li>{skill}</li>)
-                        }
-                    </ul>
-                    <p>{profile.sociallinks}</p>
                 </div>
                 <div className='userRight'>
+                    <h4>Skills: </h4>
+                    <p>{profile.skills.join(', ')}</p>
+                    <p>{profile.sociallinks}</p>
                     <FloatingActionButton className='addUser'>
                         <ContentAdd />
                     </FloatingActionButton>
