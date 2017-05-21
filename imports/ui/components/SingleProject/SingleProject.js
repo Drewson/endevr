@@ -30,6 +30,7 @@ const SingleProject = ({ project }) => {
         <div className='projectDescription'>
           <h4>Description: </h4>
           <p>{project.projectdescription}</p>
+          <img src={project.imageupload} />
         </div>
       </div>
 
