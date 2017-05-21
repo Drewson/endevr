@@ -13,7 +13,6 @@ import ProjectListContainer from '../ProjectList/ProjectListContainer'
 import MyProjectsContainer from '../MyProjects/MyProjectsContainer';
 import SingleProjectContainer from '../SingleProjectContainer/SingleProjectContainer';
 import CreateProfileContainer from '../CreateProfile/CreateProfileContainer';
-import CreateProfileSelectContainer from '../CreateProfileSelectPage/CreateProfileSelectContainer';
 import ViewProfileContainer from '../ViewProfile/ViewProfileContainer';
 import YourProfileContainer from '../ViewProfile/YourProfileContainer';
 import CreateProjectContainer from '../CreateProject/CreateProjectContainer';
@@ -43,7 +42,6 @@ class App extends Component {
                             <Route path="/createproject" component={CreateProjectContainer} />
                             <Route path="/myprojects" render={() => projectsProp && <MyProjectsContainer projects={projectsProp} /> } />
                             <Route path="/project/:projectId" component={SingleProjectContainer} />
-                            <Route path="/newprofile" component={CreateProfileSelectContainer} />
                             <Route path="/viewprofile" render={() => profilesProp && <YourProfileContainer profiles={profilesProp} /> } />
                             <Route path="/nominate/:projectId" component={NominateContainer} />
                             <Route path="/inviteusers" render={() => profilesProp && <UserListContainer profiles={profilesProp} /> } />

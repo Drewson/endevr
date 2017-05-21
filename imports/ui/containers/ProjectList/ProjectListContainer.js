@@ -1,56 +1,47 @@
 import React, { Component } from 'react';
-import PostList from './ProjectList';
 import { Link } from 'react-router-dom';
+import { createContainer } from 'meteor/react-meteor-data';
+
 import FloatingActionButton from 'material-ui/FloatingActionButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import Menu from 'material-ui/Menu';
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
 import ContentFilter from 'material-ui/svg-icons/content/filter-list';
 import MenuItem from 'material-ui/MenuItem';
+
+import PostList from './ProjectList';
+
 import './styles.css';
 
 import { Projects } from '../../../api/projects';
 
-import { createContainer } from 'meteor/react-meteor-data';
 
-import RaisedButton from 'material-ui/RaisedButton';
 
 class ProjectListContainer extends Component {
 
     sortByCategory(){
-      let category = [];
-      this.props.projects.map(project => category.push(project.categories));
-      category.sort();
-      let orderedProjects = this.props.projects;
-      let newOrder = orderedProjects.map((project, i) => project.categories = category[i] );
-      console.log(newOrder);
-      this.props.projects = newOrder;
+      this.props.projects.sort((a, b) => a.categories > b.categories);
       this.forceUpdate();
+      console.log('By Category',this.props.projects);
     }
 
     sortByPaid(){
-      // this.setState((prevState, props) => {
-      //   return { projects: prevState.projects.sort((a, b) => a.payment === "paid")}
-      // });
-      this.props.projects = this.props.projects.sort((a, b) => a.payment === "paid");
+      this.props.projects = this.props.projects.sort((a, b) => a.payment === "unpaid");
       this.forceUpdate();
-      console.log(this.props.projects)
+      console.log('By Payment Type',this.props.projects)
     }
 
     sortByDate(){
-
-      // this.setState((prevState, props) => {
-      //   return { projects: prevState.projects.sort((a, b) => a.date - b.date) };
-      // });
-      this.props.projects = this.props.projects.sort((a, b) => a.date - b.date);
+      this.props.projects = this.props.projects.sort((a, b) => a.date > b.date);
       this.forceUpdate();
-      console.log(this.props.projects)
+      console.log('By Date',this.props.projects)
     }
 
     render(){
         return(
-            <div style={{margin: '40px 100px'}}>
+            <div className='content-wrapper'>
 
               <div className='sorter'>
                 <span className='sortme'>

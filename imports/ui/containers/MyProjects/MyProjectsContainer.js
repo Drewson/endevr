@@ -4,6 +4,8 @@ import { Meteor } from 'meteor/meteor';
 import './style';
 import Project from '../../components/Project/project';
 
+import styles from './styles.css';
+
 class MyProjectsContainer extends Component {
   constructor() {
     super();

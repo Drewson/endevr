@@ -8,7 +8,7 @@ const UserList = ({ profiles }) => {
           {
             profiles.map(profile => {
               return <User profile={profile} key={profile._id} />
-              })
+            })
           }
         </div>
     )

@@ -37,7 +37,7 @@ const SingleProject = ({ project }) => {
         {
           project.owner !== Meteor.userId() &&
           <Link to={`/nominate/${project._id}`}>
-            <RaisedButton label='Join!' className='join' />
+            <RaisedButton label='Join!' className='join' primary={true} />
           </Link>
         }
     </Card>
