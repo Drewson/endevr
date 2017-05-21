@@ -24,6 +24,7 @@ const Project = ({ project }) => {
                     </div>
                 </div>
                 <Chip style={{position:'absolute', left:'10px', bottom:'10px'}}>{project.categories}</Chip>
+                <Chip style={{position:'absolute', left:'10px', bottom:'45px'}}>{project.payment}</Chip>
                 <div className='projectImage'>
                   <img src={project.imageupload} />
                 </div>
