@@ -27,7 +27,7 @@ const Nominate = ({ project }) => {
             alert('You haven\'t provided all the required information!');
         }
 
-        const formData = {userId: Meteor.userId(), projectId: project._id, projectOwner: project.owner, role: selectedRole, message: message};
+        const formData = {userId: Meteor.userId(), projectId: project._id, project: project.name, projectOwner: project.owner, role: selectedRole, message: message};
 
         Meteor.call('nominations.submitNomination', formData);
     }

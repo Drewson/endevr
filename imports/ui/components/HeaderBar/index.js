@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import FlatButton from 'material-ui/FlatButton';
 import AppBar from 'material-ui/AppBar';
 
+import MessagesDrawer from '../../containers/MessagesDrawer/MessagesContainer';
 import AccountsUIWrapper from '../AccountsUiWrapper/index';
 
 const HeaderBar = ({ currentUserId }) =>  (
@@ -24,6 +25,10 @@ const HeaderBar = ({ currentUserId }) =>  (
           !!currentUserId &&
           <Link to='/signup'><FlatButton style={{color: 'white'}} label='Create Profile'/></Link>
         }
+        {
+          !!currentUserId &&
+         <MessagesDrawer />
+        }
       </div>
     }
     iconElementRight={
@@ -32,7 +37,9 @@ const HeaderBar = ({ currentUserId }) =>  (
           <AccountsUIWrapper />
         </div>
       </div>
-  } />
+    }
+    >
+    </AppBar>
   );
 
 export default HeaderBar;

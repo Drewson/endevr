@@ -1,0 +1,20 @@
+.message-preview-text {
+  display: inline-block;
+  width: 190px;
+  font-size: 12px;
+  line-height: 1.5rem;
+}
+
+.bold {
+  font-size: 14px;
+  color: mediumaquamarine;
+  font-weight: bolder;
+}
+
+.message-button-container {
+  width: 80%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+}

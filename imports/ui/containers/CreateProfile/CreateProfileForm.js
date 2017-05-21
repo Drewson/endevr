@@ -145,8 +145,11 @@ class CreateProfileForm extends Gandalf {
 
     reader.onload = e => {
       let newData = {...data};
+      newData.userId = Meteor.userId();
       newData.imageupload = e.target.result;
       newData.skills = this.skillsList;
+
+      console.log(newData);
 
       Meteor.call('profiles.addProfile', newData);
 
