@@ -57,7 +57,7 @@ class ProjectListContainer extends Component {
                 </span>
                 <Link to='/createproject' className='createProject' style={{ textDecoration: 'none', color:'black' }} >
                 <p style={{display:'inline-block', padding:'5px'}}>Create Project: </p>
-                <FloatingActionButton>
+                <FloatingActionButton mini={true}>
                     <ContentAdd />
                 </FloatingActionButton>
               </Link>
