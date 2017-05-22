@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import { createContainer } from 'meteor/react-meteor-data';
 
 import { Card, CardTitle } from 'material-ui/Card';
 import 'url-search-params-polyfill';
@@ -10,7 +11,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import './style.css'
 
 const SingleProject = ({ project }) => {
-  console.log(project)
+
   return (
     <Card className='singleProject'>
       <h2>{project.projectname}</h2>
@@ -37,7 +38,13 @@ const SingleProject = ({ project }) => {
         {
           project.owner !== Meteor.userId() &&
           <Link to={`/nominate/${project._id}`}>
-            <RaisedButton label='Join!' className='join' primary={true} />
+              <RaisedButton label='Join!' className='join' primary={true} />
+          </Link>
+        }
+        {
+          project.owner === Meteor.userId() &&
+          <Link to={`/inviteusers`}>
+              <RaisedButton label='Invite Team' className='join' primary={true} />
           </Link>
         }
     </Card>

@@ -25,7 +25,7 @@
 }
 
 .singleProject ul{
-  padding: 0;
+  padding: 0 20px;
   margin: 0;
   list-style: none;
 }
@@ -51,11 +51,20 @@
 }
 
 .singleProjectInfo {
-  padding-left: 20px;
   text-align: left;
   display: inline-block;
   flex-basis: 20%;
+  overflow: hidden;
   border-right: 2px solid green;
+}
+
+.singleProjectInfo h4{
+  border-top: 1px solid grey;
+  padding: 5px 20px;
+}
+
+.singleProjectInfo p {
+  padding: 0px 20px;
 }
 
 .join{

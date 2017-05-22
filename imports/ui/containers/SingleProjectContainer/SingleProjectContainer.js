@@ -13,7 +13,6 @@ class SingleProjectContainer extends Component {
   }
 
   render(){
-
     return (
       <div>
         {
@@ -32,8 +31,10 @@ export default createContainer(() => {
   const readyProjects = handleProjects.ready();
   const projects = Projects.find({});
   const gotProjects = readyProjects && !!projects;
+  const currentUser = Meteor.user()
 
   return {
+    currentUser: currentUser,
     projects: projects.fetch()
   }
 }, SingleProjectContainer);
