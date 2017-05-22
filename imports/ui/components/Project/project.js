@@ -12,7 +12,10 @@ const Project = ({ project }) => {
         <Link to={`/project/${project._id}`} style={{ textDecoration: 'none' }}>
             <Card className='project' >
                 <div className='projectInfo'>
-                    <h3 className='cardTitle'>{project.projectname}</h3>
+                    <div className='cardTitle'>
+                        <h3>{project.projectname}</h3>
+                        <p>{project.date}</p>
+                    </div>
                     <div className='projectDescription'>
                         <p>{project.projectdescription}</p>
                         <div className='roles'>
@@ -26,7 +29,7 @@ const Project = ({ project }) => {
                     </div>
                 </div>
                 <Chip style={{position:'absolute', left:'10px', bottom:'10px'}}>{project.categories}</Chip>
-                <Chip style={{position:'absolute', left:'90px', bottom:'10px'}}>{project.payment}</Chip>
+                <Chip style={{position:'absolute', left:'140px', bottom:'10px'}}>{project.payment}</Chip>
                 <div className='projectImage'>
                   <img src={project.imageupload} />
                 </div>

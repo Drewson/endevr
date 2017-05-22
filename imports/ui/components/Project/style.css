@@ -8,15 +8,26 @@
 }
 
 .cardTitle{
-  letter-spacing: .2rem;
   width: 100%;
-  font-weight: 500;
   text-align: left;
-  /*text-transform: uppercase;*/
-  margin: 0;
   padding: 5px 50px;
   background-color: green;
   color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.cardTitle p{
+  font-weight: 100;
+  display: inline-block;
+  margin-right: 250px;
+}
+
+.cardTitle h3{
+  font-weight: 500;
+  margin: 0;
+  display: inline-block;
 }
 
 .projectImage {
