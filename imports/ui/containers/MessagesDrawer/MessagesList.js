@@ -13,7 +13,12 @@ const messagesHeaderStyles = {
 const MessagesList = ({ nominations, userProfiles, acceptTeamRequest, rejectTeamRequest  }) => {
   return(
     <Menu>
-      <Subheader style={messagesHeaderStyles}>Join Team Requests</Subheader>
+
+      {
+        nominations.length === 0 ?
+          <Subheader style={messagesHeaderStyles}>No Messages...</Subheader> :
+          <Subheader style={messagesHeaderStyles}>Join Team Requests</Subheader>
+      }
 
       {
         nominations.map((nomination) => {

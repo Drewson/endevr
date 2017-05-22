@@ -65,8 +65,6 @@ class MessagesDrawer extends Component {
         <Drawer open={this.state.open}>
 
         {
-          this.props.nominations.length === 0 ?
-            <h3>No messages...</h3> :
             <MessagesList
               nominations={this.props.nominations}
               userProfiles={this.props.userProfiles}
