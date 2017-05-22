@@ -18,6 +18,15 @@ Meteor.methods({
 
     Nominations.insert({...nomination});
 
+  },
+
+  'nominations.deleteNomination' (nominationId) {
+    if (!this.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+
+    Nominations.remove({_id: nominationId});
   }
 
 })

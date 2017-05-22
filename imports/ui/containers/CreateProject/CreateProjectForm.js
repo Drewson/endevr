@@ -149,13 +149,13 @@ class CreateProjectForm extends Gandalf {
 
     let realPath = 'string';
 
-    console.log(data);
-
     reader.onload = e => {
       let newData = {...data};
       newData.date = Date.now();
       newData.imageupload = e.target.result;
       newData.roles = this.rolesList;
+      newData.team = [],
+
 
       Meteor.call('projects.addProject', newData);
 

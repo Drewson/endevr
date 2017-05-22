@@ -27,4 +27,17 @@ Meteor.methods({
         });
     },
 
+    'projects.addTeamMember' (teamMember, projectId) {
+        if(!this.userId) {
+            throw new Meteor.Error('not-authorized');
+        }
+
+        Projects.update(
+            {_id: projectId},
+            {$push: { team: teamMember }
+        });
+
+        console.log(Projects.find().fetch());
+    }
+
 });

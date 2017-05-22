@@ -62,7 +62,11 @@ class ProjectListContainer extends Component {
                 </FloatingActionButton>
               </Link>
               </div>
-              <PostList projects={this.props.projects} />
+                {
+                  this.props.projects.length === 0 ?
+                    <h3 style={{textAlign: 'center', fontSize: '28px'}}>No Projects...</h3> :
+                    <PostList projects={this.props.projects} />
+                }
             </div>
         )
     }

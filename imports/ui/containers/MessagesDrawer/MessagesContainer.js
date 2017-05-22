@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
 
+import { Meteor } from 'meteor/meteor';
+
 import Drawer from 'material-ui/Drawer';
 import IconButton from 'material-ui/FlatButton';
 import Menu from 'material-ui/Menu';
@@ -36,6 +38,16 @@ class MessagesDrawer extends Component {
     this.setState({open: !this.state.open});
   }
 
+  acceptTeamRequest( newMemberProfile, projectId, nominationId ) {
+    Meteor.call( 'projects.addTeamMember', newMemberProfile, projectId );
+
+    Meteor.call( 'nominations.deleteNomination', nominationId );
+  }
+
+  rejectTeamRequest( nominationId ) {
+    Meteor.call( 'nominations.deleteNomination', nominationId );
+  }
+
   render() {
     return (
       <div>
@@ -51,7 +63,12 @@ class MessagesDrawer extends Component {
         {
           this.props.nominations.length === 0 ?
             <h3>No messages...</h3> :
-            <MessagesList nominations={this.props.nominations} userProfiles={this.props.userProfiles} />
+            <MessagesList
+              nominations={this.props.nominations}
+              userProfiles={this.props.userProfiles}
+              acceptTeamRequest={this.acceptTeamRequest}
+              rejectTeamRequest={this.rejectTeamRequest}
+            />
         }
 
         </Drawer>

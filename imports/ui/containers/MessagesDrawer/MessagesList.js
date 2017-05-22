@@ -10,7 +10,7 @@ const messagesHeaderStyles = {
   textTransform: 'uppercase'
 }
 
-const MessagesList = ({ nominations, userProfiles  }) => {
+const MessagesList = ({ nominations, userProfiles, acceptTeamRequest, rejectTeamRequest  }) => {
   return(
     <Menu>
       <Subheader style={messagesHeaderStyles}>Join Team Requests</Subheader>
@@ -25,7 +25,12 @@ const MessagesList = ({ nominations, userProfiles  }) => {
 
             });
 
-            return <Message details={nomination} userProfile={userProfile[0]} />
+            return <Message
+                    details={nomination}
+                    userProfile={userProfile[0]}
+                    acceptTeamRequest={acceptTeamRequest}
+                    rejectTeamRequest={rejectTeamRequest}
+                  />
           }
         })
       }
