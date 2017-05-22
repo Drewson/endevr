@@ -11,24 +11,34 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 import './style.css'
 
 const SingleProject = ({ project }) => {
-
+  console.log(project)
   return (
     <Card className='singleProject'>
       <h2>{project.projectname}</h2>
       <div className='projectContent'>
-        <div className='singleProjectInfo'>
-          <h4>Location: </h4>
-          <p>{project.teamlocation}</p>
-          <h4>Roles: </h4>
-          <ul>
-          {
-            project.roles.map(role => <li>{role}</li>)
-          }
-          </ul>
-          <h4>Payment: </h4>
-          <p>{project.payment}</p>
-        </div>
-        <div className='projectDescription'>
+        <ul className='singleProjectInfo'>
+          <li>
+            <h4>Date: </h4>
+            <p>{project.date.toString()}</p>
+          </li>
+          <li>
+            <h4>Location: </h4>
+            <p>{project.teamlocation}</p>
+          </li>
+          <li>
+            <h4>Roles: </h4>
+            <ul className='projectRoles'>
+            {
+              project.roles.map(role => <li>{role}</li>)
+            }
+            </ul>
+          </li>
+          <li>
+            <h4>Payment: </h4>
+            <p>{project.payment}</p>
+          </li>
+        </ul>
+        <div className='singleProjectDescription'>
           <h4>Description: </h4>
           <p>{project.projectdescription}</p>
           <img src={project.imageupload} />
