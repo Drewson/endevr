@@ -15,7 +15,8 @@ class ViewProfileContainer extends Component {
 
   render() {
     return(
-      <div className='content-container' style={{width:'80%!important'}}>
+      <div>
+        <h2 className='profileHeaderTab'>User Profile</h2>
 
         {
           this.props.profiles.map( (profile) => {

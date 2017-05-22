@@ -32,6 +32,7 @@ const User = ({ profile }) => {
                     <h4>Skills: </h4>
                     <p>{profile.skills.join(', ')}</p>
                     <p>{profile.sociallinks}</p>
+
                     <FloatingActionButton className='addUser'>
                         <ContentAdd />
                     </FloatingActionButton>

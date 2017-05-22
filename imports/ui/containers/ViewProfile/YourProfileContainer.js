@@ -13,8 +13,9 @@ class ViewProfileContainer extends Component {
 
   render() {
     return(
-      <div className='content-container'>
-        <h2>Your Profile</h2>
+      <div>
+        <h2 className='profileHeaderTab'>Your Profile</h2>
+
 
         {
           this.props.profiles.map( (profile) => {

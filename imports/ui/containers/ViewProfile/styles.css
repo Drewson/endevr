@@ -1,3 +1,23 @@
+.profileHeaderTab {
+  width: 75%;
+  margin: 40px auto;
+  margin-bottom: 0px;
+  padding: 10px;
+  border-radius: 5px 5px 0 0;
+  background: green;
+  color: white;
+  font-weight: 300;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.singleProfile {
+  width: 75%;
+  margin: 5px auto;
+  position: relative;
+  flex-wrap: wrap;
+}
+
 .profile-image-display {
   background-size: cover;
 }

@@ -3,8 +3,11 @@ import PropTypes from 'prop-types';
 import { Profiles } from '../../../api/profiles';
 import { createContainer } from 'meteor/react-meteor-data';
 
+import Card from 'material-ui/Card';
 import IconButton from 'material-ui/IconButton';
 import Avatar from 'material-ui/Avatar';
+
+import './styles.css';
 
 
 const Profile = ({ profile }) => {
@@ -15,14 +18,22 @@ const Profile = ({ profile }) => {
     boxShadow: '0px 4px 10px -2px rgba(209,209,209,1)'
   }
 
+  const singleProfileStyles = {
+    width: '85%',
+    margin: '20px auto',
+    position: 'relative',
+    flexWrap: 'wrap'
+  }
+
   if(!profile) {
-    console.log('no profile!');
     return <h2>This user doesn't have a profile yet...</h2>
   }
 
+  console.log(profile);
+
   return (
 
-    <div style={{paddingTop:'15px'}}>
+    <Card className='singleProfile' >
       <section className='profile-header-area'>
 
         {
@@ -49,7 +60,7 @@ const Profile = ({ profile }) => {
         <p className='email-text'>{ profile.email }</p>
         <h3>Social:</h3>
       </section>
-    </div>
+    </Card>
   );
 }
 
