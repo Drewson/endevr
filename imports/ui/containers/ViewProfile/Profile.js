@@ -29,8 +29,6 @@ const Profile = ({ profile }) => {
     return <h2>This user doesn't have a profile yet...</h2>
   }
 
-  console.log(profile);
-
   return (
 
     <Card className='singleProfile' >
