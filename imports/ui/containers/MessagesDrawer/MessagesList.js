@@ -18,7 +18,6 @@ const MessagesList = ({ nominations, userProfiles  }) => {
       {
         nominations.map((nomination) => {
           if(nomination.projectOwner === Meteor.userId()) {
-            console.log('project owner and current user match');
 
             const userProfile = userProfiles.filter((userProfile) => {
 

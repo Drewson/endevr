@@ -16,7 +16,7 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
 
-    Nominations.insert({...nomination}, () => console.log('Nominations list:', Nominations.find().fetch()));
+    Nominations.insert({...nomination});
 
   }
 

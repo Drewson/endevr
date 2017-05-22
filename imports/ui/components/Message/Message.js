@@ -20,7 +20,7 @@ const avatarStyles = {
 }
 
 const Message = ({ details, userProfile }) => {
-  console.log('message details', details, 'user profile', userProfile);
+
   return (
     <Card style={messagePreviewStyles}>
       <Avatar style={avatarStyles} src={userProfile.imageupload} />
