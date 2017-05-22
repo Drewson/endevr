@@ -149,13 +149,13 @@ class CreateProjectForm extends Gandalf {
 
     let realPath = 'string';
 
-    console.log(data);
-
     reader.onload = e => {
       let newData = {...data};
       newData.date = Date.now();
       newData.imageupload = e.target.result;
       newData.roles = this.rolesList;
+      newData.team = [],
+
 
       Meteor.call('projects.addProject', newData);
 
@@ -216,7 +216,7 @@ class CreateProjectForm extends Gandalf {
           <ul className='roles-list'>
             {
               this.rolesList.map( (role) => {
-                return <Card style={rolesCardStyles}><li key={Date.now() + role} style={roleStyles}>{role}</li></Card>
+                return <Card style={rolesCardStyles}><li key={Date(Date.now()) + role} style={roleStyles}>{role}</li></Card>
               })
             }
           </ul> <br />

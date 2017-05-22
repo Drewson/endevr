@@ -2,13 +2,17 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import { createContainer } from 'meteor/react-meteor-data';
 
-import { Card, CardTitle } from 'material-ui/Card';
 import 'url-search-params-polyfill';
+
+import { Card, CardTitle } from 'material-ui/Card';
 import Chip from 'material-ui/Chip';
+import Avatar from 'material-ui/Avatar';
+import Divider from 'material-ui/Divider';
 import RaisedButton from 'material-ui/RaisedButton';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
-import './style.css'
+
+import './styles.css';
 
 const SingleProject = ({ project }) => {
   console.log(project)
@@ -16,32 +20,52 @@ const SingleProject = ({ project }) => {
     <Card className='singleProject'>
       <h2>{project.projectname}</h2>
       <div className='projectContent'>
-        <ul className='singleProjectInfo'>
-          <li>
-            <h4>Date: </h4>
-            <p>{project.date.toString()}</p>
-          </li>
-          <li>
-            <h4>Location: </h4>
-            <p>{project.teamlocation}</p>
-          </li>
-          <li>
-            <h4>Roles: </h4>
-            <ul className='projectRoles'>
-            {
-              project.roles.map(role => <li>{role}</li>)
+        <div className='singleProjectInfo'>
+
+          <h4>Location: </h4>
+          <p>{project.teamlocation}</p>
+
+          <Divider style={{marginTop: '10px'}} />
+
+          <h4>Team Members:</h4>
+          <ul>
+            { project.team != undefined &&
+              project.team.map( teamMember => (
+                <Link to={`/users/${teamMember._id}`} style={{textDecoration: 'none'}}>
+                  <li className='team-member'>
+                    <Avatar src={teamMember.imageupload} />
+                    <div className='team-member-info'>
+                      <h5 className='team-member-name'>{teamMember.name}</h5>
+                      <p className='team-member-role'>{teamMember.role}</p>
+                    </div>
+                  </li>
+                </Link>
+              ))
             }
-            </ul>
-          </li>
-          <li>
-            <h4>Payment: </h4>
-            <p>{project.payment}</p>
-          </li>
-        </ul>
+          </ul>
+
+          <Divider style={{marginTop: '10px'}} />
+
+          <h4>Looking For: </h4>
+          <ul>
+            {
+              project.roles.map(role => <p key={role + Date.now()}>{role}</p>)
+            }
+          </ul>
+
+          <Divider style={{marginTop: '20px'}} />
+
+          <h4>Payment: </h4>
+          {
+            project.payment === 'paid' ?
+              <p>Paid</p> :
+              <p>Unpaid</p>
+          }
+        </div>
         <div className='singleProjectDescription'>
-          <h4>Description: </h4>
-          <p>{project.projectdescription}</p>
           <img src={project.imageupload} />
+          <h3 className='description-header'>Description: </h3>
+          <p className='project-description'>{project.projectdescription}</p>
         </div>
       </div>
 

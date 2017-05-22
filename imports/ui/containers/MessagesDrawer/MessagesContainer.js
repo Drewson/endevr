@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
 
+import { Meteor } from 'meteor/meteor';
+
 import Drawer from 'material-ui/Drawer';
 import IconButton from 'material-ui/FlatButton';
 import Menu from 'material-ui/Menu';
@@ -36,22 +38,39 @@ class MessagesDrawer extends Component {
     this.setState({open: !this.state.open});
   }
 
+  acceptTeamRequest( newMemberProfile, projectId, nominationDetails ) {
+
+    let teamMemberInfo = {...newMemberProfile, role: nominationDetails.role};
+
+    console.log(teamMemberInfo);
+
+    Meteor.call( 'projects.addTeamMember', teamMemberInfo, projectId );
+
+    Meteor.call( 'nominations.deleteNomination', nominationDetails._id );
+  }
+
+  rejectTeamRequest( nominationId ) {
+    Meteor.call( 'nominations.deleteNomination', nominationId );
+  }
+
   render() {
     return (
       <div>
         <IconButton
           style={messagesButtonStyles}
           onTouchTap={() => this.handleToggle()}
-          toolTip='Messages'
         >
         <SpeakerNotes style={{color: 'white', 'marginTop': '25%'}} />
         </IconButton>
         <Drawer open={this.state.open}>
 
         {
-          this.props.nominations.length === 0 ?
-            <h3>No messages...</h3> :
-            <MessagesList nominations={this.props.nominations} userProfiles={this.props.userProfiles} />
+            <MessagesList
+              nominations={this.props.nominations}
+              userProfiles={this.props.userProfiles}
+              acceptTeamRequest={this.acceptTeamRequest}
+              rejectTeamRequest={this.rejectTeamRequest}
+            />
         }
 
         </Drawer>

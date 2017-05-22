@@ -224,12 +224,12 @@ class CreateProfileForm extends Gandalf {
 
         { fields.email.element } <br />
         { fields.socialLinks.element } <br />
-        <Link to='/viewprofile' >
-        <RaisedButton
-            label='Submit'
-            onTouchTap={() => this.handleSubmit()}
-        >
-        </RaisedButton>
+        <Link to='/yourprofile' >
+          <RaisedButton
+              label='Submit'
+              onTouchTap={() => this.handleSubmit()}
+          >
+          </RaisedButton>
         </Link>
       </form>
     );

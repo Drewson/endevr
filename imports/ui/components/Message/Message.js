@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Meteor } from 'meteor/meteor';
+
 import Card from 'material-ui/Card';
 import Avatar from 'material-ui/Avatar';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -19,8 +21,8 @@ const avatarStyles = {
   display: 'inline',
 }
 
-const Message = ({ details, userProfile }) => {
-  console.log('message details', details, 'user profile', userProfile);
+const Message = ({ details, userProfile, acceptTeamRequest, rejectTeamRequest }) => {
+
   return (
     <Card style={messagePreviewStyles}>
       <Avatar style={avatarStyles} src={userProfile.imageupload} />
@@ -32,11 +34,12 @@ const Message = ({ details, userProfile }) => {
       <div className='message-button-container'>
         <RaisedButton
           label='Accept'
-          backgroundColor="#00800"
+          secondary={true}
+          onTouchTap={() => acceptTeamRequest( userProfile, details.projectId, details )}
         />
         <RaisedButton
           label='Deny'
-          secondary={true}
+          onTouchTap={() => rejectTeamRequest( details._id )}
         />
       </div>
     </Card>

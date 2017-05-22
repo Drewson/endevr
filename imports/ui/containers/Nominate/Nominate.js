@@ -1,74 +1,110 @@
-import React from 'react';
-import Project from '../../components/Project/project';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Meteor } from 'meteor/meteor';
 
 import TextField from 'material-ui/TextField';
-import {List, ListItem} from 'material-ui/List';
+import { List, ListItem } from 'material-ui/List';
 import RaisedButton from 'material-ui/RaisedButton';
 import Subheader from 'material-ui/Subheader';
 
+import Project from '../../components/Project/project';
 
-let selectedRole = '';
-let message = '';
+class Nominate extends Component {
+    constructor() {
+        super();
 
-const addRoleToList = (event) => {
-    selectedRole = event.target.value;
-}
+        this.state = {
+            selectedRole: '',
+            message: ''
+        }
+    }
 
-const getMessage = (event) => {
-    message = event.target.value;
-}
+    updateSelectedRole(event) {
+        this.setState({
+            selectedRole: event.target.value
+        })
+    }
 
-const Nominate = ({ project }) => {
+    updateMessage(event) {
+        this.setState({
+            message: event.target.value
+        })
+    }
 
-    const handleSubmit = () => {
-        if(!selectedRole || !message) {
+    handleSubmit() {
+        if(!this.state.selectedRole || !this.state.message) {
             alert('You haven\'t provided all the required information!');
         }
 
-        const formData = {userId: Meteor.userId(), projectId: project._id, project: project.name, projectOwner: project.owner, role: selectedRole, message: message};
+        const formData = {
+            userId: Meteor.userId(),
+            projectId: this.props.project._id,
+            project: this.props.project.name,
+            projectOwner: this.props.project.owner,
+            role: this.state.selectedRole,
+            message: this.state.message
+        };
 
-        Meteor.call('nominations.submitNomination', formData);
+        Meteor.call('nominations.submitNomination', formData, function(err) {
+            if(err) {
+                alert('Our apologies...Something went wrong when processing your request. Please try again later.')
+            } else {
+                alert('Thanks! Your request has been sent!');
+            }
+        });
     }
 
-    return(
-        <div style={{display: 'flex', justifyContent:'center', flexWrap:'wrap', width:'80%', margin:'0 auto'}}>
-            <List style={{flexBasis: '100%'}}>
-                <Subheader>Which Position are You Interested In?: </Subheader>
-                <select
-                    name='select'
-                    onChange={(event) => addRoleToList(event)}
+    render() {
+        return (
+            <div style={{display: 'flex', justifyContent:'center', flexWrap:'wrap', width:'80%', margin:'0 auto'}}>
+                <List style={{flexBasis: '100%'}}>
 
-                >
-                {
-                    project.roles.map(role => (
+                    <Subheader>Which Position are You Interested In?: </Subheader>
+
+                    <select
+                        name='select'
+                        id='role-select'
+                        value={this.state.selectedRole}
+                        defaultValue={'n/a'}
+                        onChange={(event) => this.updateSelectedRole(event)}
+
+                    >
                         <option
-                            key={role + Date.now()}
-                            value={role}
-                            // {selected = role.value ===  ? true : false}
+                            key={`default${Date.now()}`}
+                            value='n/a'
                         >
-                            {role}
+                            Select a role...
                         </option>
-                    ))
-                }
-                </select>
-            </List>
-            <TextField
-                style={{flexBasis: '100%'}}
-                floatingLabelText="Message:"
-                hintText='enter here'
-                multiLine={true}
-                onChange={(event) => getMessage(event)}
-            />
-            <RaisedButton
-                label="Submit"
-                secondary={true}
-                onTouchTap={() => handleSubmit()}
-            />
-        </div>
-    )
-
+                        {
+                            this.props.project.roles.map((role, i) => (
+                                    <option
+                                        key={role + Date.now()}
+                                        value={role}
+                                    >{role}
+                                    </option>
+                            ))
+                        }
+                    </select>
+                </List>
+                <TextField
+                    style={{flexBasis: '100%'}}
+                    floatingLabelText="Message:"
+                    hintText='enter here'
+                    multiLine={true}
+                    value={this.state.message}
+                    onChange={(event) => this.updateMessage(event)}
+                />
+                <Link to='/'>
+                    <RaisedButton
+                        label="Submit"
+                        secondary={true}
+                        onTouchTap={() => this.handleSubmit()}
+                    />
+                </Link>
+            </div>
+        );
+    }
 }
 
 export default Nominate;

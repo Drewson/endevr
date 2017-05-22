@@ -16,8 +16,17 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
 
-    Nominations.insert({...nomination}, () => console.log('Nominations list:', Nominations.find().fetch()));
+    Nominations.insert({...nomination});
 
+  },
+
+  'nominations.deleteNomination' (nominationId) {
+    if (!this.userId) {
+      throw new Meteor.Error('not-authorized');
+    }
+
+
+    Nominations.remove({_id: nominationId});
   }
 
 })

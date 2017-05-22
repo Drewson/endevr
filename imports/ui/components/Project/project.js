@@ -5,7 +5,7 @@ import 'url-search-params-polyfill';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import Chip from 'material-ui/Chip';
-import './style.css';
+import './styles.css';
 
 const Project = ({ project }) => {
     return (
@@ -14,9 +14,8 @@ const Project = ({ project }) => {
                 <div className='projectInfo'>
                     <div className='cardTitle'>
                         <h3>{project.projectname}</h3>
-                        <p>{project.date}</p>
                     </div>
-                    <div className='projectDescription'>
+                    <div className='mainProjectDescription'>
                         <p>{project.projectdescription}</p>
                         <div className='roles'>
                             <h4>Roles Needed: </h4>

@@ -15,7 +15,13 @@ const Profile = ({ profile }) => {
     boxShadow: '0px 4px 10px -2px rgba(209,209,209,1)'
   }
 
+  if(!profile) {
+    console.log('no profile!');
+    return <h2>This user doesn't have a profile yet...</h2>
+  }
+
   return (
+
     <div style={{paddingTop:'15px'}}>
       <section className='profile-header-area'>
 

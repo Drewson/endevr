@@ -10,15 +10,19 @@ const messagesHeaderStyles = {
   textTransform: 'uppercase'
 }
 
-const MessagesList = ({ nominations, userProfiles  }) => {
+const MessagesList = ({ nominations, userProfiles, acceptTeamRequest, rejectTeamRequest  }) => {
   return(
     <Menu>
-      <Subheader style={messagesHeaderStyles}>Join Team Requests</Subheader>
+
+      {
+        nominations.length === 0 ?
+          <Subheader style={messagesHeaderStyles}>No Messages...</Subheader> :
+          <Subheader style={messagesHeaderStyles}>Join Team Requests</Subheader>
+      }
 
       {
         nominations.map((nomination) => {
           if(nomination.projectOwner === Meteor.userId()) {
-            console.log('project owner and current user match');
 
             const userProfile = userProfiles.filter((userProfile) => {
 
@@ -26,7 +30,12 @@ const MessagesList = ({ nominations, userProfiles  }) => {
 
             });
 
-            return <Message details={nomination} userProfile={userProfile[0]} />
+            return <Message
+                    details={nomination}
+                    userProfile={userProfile[0]}
+                    acceptTeamRequest={acceptTeamRequest}
+                    rejectTeamRequest={rejectTeamRequest}
+                  />
           }
         })
       }

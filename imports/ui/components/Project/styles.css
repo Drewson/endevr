@@ -55,7 +55,7 @@
   text-align: center;
 }
 
-.projectDescription {
+.mainProjectDescription {
   text-align: left;
   font-family: sans-serif;
   display: flex;
@@ -64,13 +64,14 @@
   height: 100%;
 }
 
-.projectDescription p{
+.mainProjectDescription p{
   display: inline-block;
   flex-basis: 60%;
+  color: black;
   padding: 20px;
 }
 
-.projectDescription ul{
+.mainProjectDescription ul{
   display: inline-block;
   flex-basis: 20%;
 }
@@ -100,4 +101,8 @@ h4 {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.roles li {
+  color: grey;
 }
