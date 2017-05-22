@@ -7,16 +7,28 @@
   height: 200px;
 }
 
+.cardTitle{
+  letter-spacing: .2rem;
+  width: 100%;
+  font-weight: 500;
+  text-align: left;
+  /*text-transform: uppercase;*/
+  margin: 0;
+  padding: 5px 50px;
+  background-color: green;
+  color: white;
+}
+
 .projectImage {
   height: 196px;
   /*max-height: 195px;*/
-  width: 280px;
+  width: 250px;
   position: absolute;
   right: 0px;
   top: 0px;
   display: inline-block;
   overflow: hidden;
-  border-left: 5px solid green;
+  border-left: 2px solid green;
 
 }
 
@@ -28,14 +40,29 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  width: 70%;
-  padding: 0 15px;
+  width: 100%;
+  /*padding: 0 15px;*/
   text-align: center;
 }
 
 .projectDescription {
+  text-align: left;
   font-family: sans-serif;
-  flex-basis: 100%;
+  display: flex;
+  width: 100%;
+  margin-right: 100px;
+  height: 100%;
+}
+
+.projectDescription p{
+  display: inline-block;
+  flex-basis: 60%;
+  padding: 20px;
+}
+
+.projectDescription ul{
+  display: inline-block;
+  flex-basis: 20%;
 }
 
 .projectCategory {
@@ -47,13 +74,16 @@
 h4 {
   display: inline-block;
   margin: 5px;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 .roles {
-  position: absolute;
-  right: 330px;
-  bottom: 10px;
+  padding: 20px;
+  border-left: 1px solid grey;
+}
+
+.roles h4{
+  margin: 0;
 }
 
 .roles ul {

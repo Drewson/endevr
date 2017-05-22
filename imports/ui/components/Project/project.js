@@ -12,19 +12,21 @@ const Project = ({ project }) => {
         <Link to={`/project/${project._id}`} style={{ textDecoration: 'none' }}>
             <Card className='project' >
                 <div className='projectInfo'>
-                    <CardTitle title={project.projectname} style={{flexBasis:'100%', textDecoration:'underline'}} />
-                    <CardText className='projectDescription'>{project.projectdescription}</CardText>
-                    <div className='roles'>
-                        <h4>Roles Needed: </h4>
-                        <ul>
-                        {
-                            project.roles.map((role, i) => <li key={i}>{role}</li>)
-                        }
-                        </ul>
+                    <h3 className='cardTitle'>{project.projectname}</h3>
+                    <div className='projectDescription'>
+                        <p>{project.projectdescription}</p>
+                        <div className='roles'>
+                            <h4>Roles Needed: </h4>
+                            <ul>
+                            {
+                                project.roles.map((role, i) => <li key={i}>{role}</li>)
+                            }
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <Chip style={{position:'absolute', left:'10px', bottom:'10px'}}>{project.categories}</Chip>
-                <Chip style={{position:'absolute', left:'10px', bottom:'45px'}}>{project.payment}</Chip>
+                <Chip style={{position:'absolute', left:'90px', bottom:'10px'}}>{project.payment}</Chip>
                 <div className='projectImage'>
                   <img src={project.imageupload} />
                 </div>

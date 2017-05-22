@@ -1,5 +1,5 @@
 .content-wrapper {
-    margin: 40px 100px;
+    margin: 0px 100px;
 }
 
 .projectList {
@@ -36,10 +36,7 @@
     justify-content: space-between;
     display: flex;
     align-items: flex-end;
-    border: 2px solid green;
-    border-radius: 5px 5px 0 0;
-    background: green;
-    color: white;
+    margin: 10px;
 }
 
 .sorter p {

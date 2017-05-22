@@ -47,7 +47,7 @@ class ProjectListContainer extends Component {
                 <span className='sortme'>
                   <p>Sort By: </p>
                   <IconMenu
-                    iconButtonElement={<IconButton><ContentFilter color={'white'} /></IconButton>}
+                    iconButtonElement={<IconButton><ContentFilter /></IconButton>}
                     multiple={true}
                   >
                     <MenuItem className='sortButton' primaryText="Date" onClick={() => this.sortByDate()} />
@@ -55,9 +55,9 @@ class ProjectListContainer extends Component {
                     <MenuItem className='sortButton' primaryText="Category" onClick={() => this.sortByCategory()} />
                   </IconMenu>
                 </span>
-                <Link to='/createproject' className='createProject' style={{ textDecoration: 'none', color:'white' }} >
+                <Link to='/createproject' className='createProject' style={{ textDecoration: 'none', color:'black' }} >
                 <p style={{display:'inline-block', padding:'5px'}}>Create Project: </p>
-                <FloatingActionButton backgroundColor='black' mini={true} >
+                <FloatingActionButton>
                     <ContentAdd />
                 </FloatingActionButton>
               </Link>
