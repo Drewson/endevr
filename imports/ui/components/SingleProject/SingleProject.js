@@ -31,7 +31,7 @@ const SingleProject = ({ project }) => {
           <ul>
             {
               project.team.map( teamMember => (
-                <Link to={`/users/:${teamMember._id}`} style={{textDecoration: 'none'}}>
+                <Link to={`/users/${teamMember._id}`} style={{textDecoration: 'none'}}>
                   <li className='team-member'>
                     <Avatar src={teamMember.imageupload} />
                     <div className='team-member-info'>
