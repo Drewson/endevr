@@ -38,10 +38,15 @@ class MessagesDrawer extends Component {
     this.setState({open: !this.state.open});
   }
 
-  acceptTeamRequest( newMemberProfile, projectId, nominationId ) {
-    Meteor.call( 'projects.addTeamMember', newMemberProfile, projectId );
+  acceptTeamRequest( newMemberProfile, projectId, nominationDetails ) {
 
-    Meteor.call( 'nominations.deleteNomination', nominationId );
+    let teamMemberInfo = {...newMemberProfile, role: nominationDetails.role};
+
+    console.log(teamMemberInfo);
+
+    Meteor.call( 'projects.addTeamMember', teamMemberInfo, projectId );
+
+    Meteor.call( 'nominations.deleteNomination', nominationDetails._id );
   }
 
   rejectTeamRequest( nominationId ) {
@@ -54,7 +59,6 @@ class MessagesDrawer extends Component {
         <IconButton
           style={messagesButtonStyles}
           onTouchTap={() => this.handleToggle()}
-          toolTip='Messages'
         >
         <SpeakerNotes style={{color: 'white', 'marginTop': '25%'}} />
         </IconButton>

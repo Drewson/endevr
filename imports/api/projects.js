@@ -7,7 +7,7 @@ if (Meteor.isServer){
 
     Meteor.publish('projects', function (){
         return Projects.find({}, { fields: { categories: 1, imageupload: 1, owner: 1, payment: 1, projectdescription: 1,
-                                            projectname: 1, roles: 1, teamlocation: 1, date: 1 }
+                                            projectname: 1, roles: 1, team: 1, teamlocation: 1, date: 1 }
         })
     });
 }
@@ -31,6 +31,7 @@ Meteor.methods({
         if(!this.userId) {
             throw new Meteor.Error('not-authorized');
         }
+
 
         Projects.update(
             {_id: projectId},

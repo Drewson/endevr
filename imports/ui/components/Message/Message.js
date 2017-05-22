@@ -35,7 +35,7 @@ const Message = ({ details, userProfile, acceptTeamRequest, rejectTeamRequest })
         <RaisedButton
           label='Accept'
           secondary={true}
-          onTouchTap={() => acceptTeamRequest( userProfile, details.projectId, details._id )}
+          onTouchTap={() => acceptTeamRequest( userProfile, details.projectId, details )}
         />
         <RaisedButton
           label='Deny'

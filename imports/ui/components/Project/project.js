@@ -5,7 +5,7 @@ import 'url-search-params-polyfill';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import Chip from 'material-ui/Chip';
-import './style.css';
+import './styles.css';
 
 const Project = ({ project }) => {
     return (

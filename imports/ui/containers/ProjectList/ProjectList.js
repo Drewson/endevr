@@ -1,11 +1,11 @@
 import React from 'react';
 import Project from '../../components/Project/project';
 
-const ProjectList = (projects) => {
+const ProjectList = ({ projects }) => {
     return(
         <div>
             {
-                projects.projects.map( (project) => {
+                projects.map( (project) => {
                     return <Project project={project} key={project._id} />
                 })
             }
