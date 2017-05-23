@@ -111,3 +111,9 @@ h4 {
 .roles li {
   color: grey;
 }
+
+.cat{
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}

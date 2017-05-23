@@ -27,8 +27,10 @@ const Project = ({ project }) => {
                         </div>
                     </div>
                 </div>
-                <Chip style={{position:'absolute', left:'10px', bottom:'10px'}}>{project.categories}</Chip>
-                <Chip style={{position:'absolute', left:'140px', bottom:'10px'}}>{project.payment}</Chip>
+                <div className='cat'>
+                    <Chip style={{marginRight:'10px', display:'inline-block'}}>{project.categories}</Chip>
+                    <Chip style={{display:'inline-block'}}>{project.payment}</Chip>
+                </div>
                 <div className='projectImage'>
                   <img src={project.imageupload} />
                 </div>
