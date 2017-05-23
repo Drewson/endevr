@@ -56,7 +56,7 @@ const Profile = ({ profile }) => {
         <p>{profile.skills.join(', ')}</p>
         <h3>Email:</h3>
         <p className='email-text'>{ profile.email }</p>
-        <h3>Social:</h3>
+        <h3>Linkedin:</h3>
       </section>
     </Card>
   );

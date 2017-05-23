@@ -7,9 +7,10 @@
 }
 
 .myProjects h2 {
+  text-align: center;
   text-transform: uppercase;
   font-family: 'Roboto', sans-serif!important;
   font-weight: 300;
-  margin-bottom: 0!important;
+  margin-bottom: 0;
   padding: 5px 0;
 }
