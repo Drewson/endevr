@@ -217,7 +217,6 @@ class CreateProfileForm extends Gandalf {
                 <RaisedButton
                     label='Submit'
                     primary={true}
-                    style={{width: '70px'}}
                     onTouchTap={() => this.handleSubmit()}
                 >
                 </RaisedButton>

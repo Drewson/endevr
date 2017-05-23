@@ -77,6 +77,7 @@ class CreateProjectForm extends Gandalf {
         errorPropName: 'errorText',
         props: {
           hintText: 'Describe your project',
+          multiLine: 'true'
         },
         debounce: 300
       },
@@ -174,7 +175,7 @@ class CreateProjectForm extends Gandalf {
 
       let reader = new FileReader();
 
-      reader.onload = e =>  document.getElementById('project-image').style.background = `url(${e.target.result})`;
+      reader.onload = e =>  document.getElementById('project-image').style.background = `url(${e.target.result}) no-repeat center center / cover`;
 
       reader.readAsDataURL(file);
 
@@ -193,54 +194,66 @@ class CreateProjectForm extends Gandalf {
     const fields = this.state.fields;
 
     return (
-      <form>
-        <h2>Create A New Project</h2>
+      <Card>
 
-        <section className='image-upload-area'>
-          <Card style={projectImageStyles} id='project-image'>
-          </Card>
-          <RaisedButton
-            containerElement='label'
-            label='Add an Image'>
-              { fields.imageupload.element }
-          </RaisedButton>
-        </section>
+        <h2 className='header-tab'>Create A New Project</h2>
+        <form>
 
-        { fields.projectname.element } <br />
-        { fields.projectdescription.element } <br />
-        { fields.teamlocation.element } <br />
+          <section className='image-upload-area'>
+            <Card style={projectImageStyles} id='project-image' className='project-image'>
+            </Card>
+            <RaisedButton
+              containerElement='label'
+              label='Add an Image'>
+                { fields.imageupload.element }
+            </RaisedButton>
+          </section>
+
+          <section className='basic-info'>
+
+            { fields.projectname.element } <br />
+            { fields.projectdescription.element } <br />
+            { fields.teamlocation.element } <br />
+
+          </section>
 
 
-        <section className='roles-list-area'>
+          <section className='roles-list-area'>
 
-          <ul className='roles-list'>
-            {
-              this.rolesList.map( (role) => {
-                return <Card style={rolesCardStyles}><li key={Date(Date.now()) + role} style={roleStyles}>{role}</li></Card>
-              })
-            }
-          </ul> <br />
-          <TextField id='roles-input' hintText='Who Are You Looking For?'/> <br />
-          <FlatButton
-            label={'Add a Role'}
-            onTouchTap={() => this.addRoleToList(document.getElementById('roles-input').value)}
-          />
+            <ul className='roles-list'>
+              {
+                this.rolesList.map( (role) => {
+                  return <Card style={rolesCardStyles}><li key={Date(Date.now()) + role} style={roleStyles}>{role}</li></Card>
+                })
+              }
+            </ul> <br />
+            <TextField id='roles-input' hintText='Who Are You Looking For?'/>
+            <FlatButton
+              label={'Add a Role'}
+              onTouchTap={() => this.addRoleToList(document.getElementById('roles-input').value)}
+            />
 
-        </section>
+          </section>
 
-        { fields.categories.element } <br />
-        <div className="payment-select-area">
-          <h4>Select a Category</h4>
-          { fields.payment.element }
-        </div>
-        <Link to='/' onClick={() => this.forceUpdate()}>
-          <RaisedButton
-            label='Submit'
-            onTouchTap={() => this.handleSubmit()}
-          >
-          </RaisedButton>
-        </Link>
-      </form>
+          <div className="category-select-area">
+
+            <h4>Select Categories:</h4>
+            { fields.categories.element }
+            { fields.payment.element }
+
+          </div>
+
+          <Link to='/' onClick={() => this.forceUpdate()}>
+            <RaisedButton
+              label='Submit'
+              primary={true}
+              onTouchTap={() => this.handleSubmit()}
+            >
+            </RaisedButton>
+          </Link>
+
+        </form>
+      </Card>
     );
   }
 }

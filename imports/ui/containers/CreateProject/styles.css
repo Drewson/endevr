@@ -3,12 +3,50 @@
   width: 350px;
 }
 
+form {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.project-image {
+  margin-bottom: 30px;
+  margin-right: 0 !important;
+}
+
+.basic-info {
+  margin: 50px auto;
+}
+
+.roles-list-area {
+  width: 75%;
+  margin-bottom: 30px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
 .roles-list {
   height: auto;
-  width: 300px;
+  width: 100%;
   padding: 10px;
   border-radius: 3px;
   list-style: none;
   display: flex;
   flex-flow: row wrap;
+}
+
+.category-select-area {
+  width: 350px;
+  margin: 50px auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.category-select-area h4 {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 40px;
 }
