@@ -32,19 +32,23 @@
 
 .projectImage {
   height: 196px;
-  /*max-height: 195px;*/
   width: 250px;
+  padding-top: 31px;
+  box-sizing: border-box;
   position: absolute;
   right: 0px;
   top: 0px;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
   border-left: 2px solid green;
 
 }
 
 .projectImage img{
-  max-height: 100%;
+  height: auto;
+  width: 90%;
 }
 
 .projectInfo {
@@ -89,6 +93,7 @@ h4 {
 }
 
 .roles {
+  height: 126px;
   padding: 20px;
   border-left: 1px solid grey;
 }
