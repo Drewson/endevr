@@ -18,8 +18,9 @@ import styles from './styles.css';
 
 const skillsCardStyles = {
   height: '40px',
-  width: '60px',
+  width: 'auto',
   margin: '5px',
+  padding: '0 5px',
   display: 'flex',
   flexFlow: 'row wrap',
   justifyContent: 'center',
@@ -41,24 +42,6 @@ class CreateProfileForm extends Gandalf {
         name: 'imageupload',
         component: Input,
         validators: ['required'],
-        // getValueInOnChange: (e) => {
-        //   // update
-
-        //   if( this.state.fields.imageupload.value && document.getElementById('profile-image') ) {
-
-        //     console.log('Doin Thangs');
-
-        //     let file = document.getElementById('image-uploader').files[0];
-
-        //     let reader = new FileReader();
-
-        //     reader.onload = e =>  document.getElementById('profile-image').style.background = `url(${e.target.result}) no-repeat center / cover`;
-
-        //     reader.readAsDataURL(file);
-        //   }
-
-        //   return e.target.value;
-        // },
         props: {
           style: {display: 'none'},
           type: 'file',
@@ -112,7 +95,7 @@ class CreateProfileForm extends Gandalf {
         validators: ['required'],
         errorPropName: 'errorText',
         props: {
-          hintText: 'Enter Your Email Address',
+          hintText: 'Enter Your Email Address'
         },
         debounce: 300
       },
@@ -187,51 +170,63 @@ class CreateProfileForm extends Gandalf {
     const fields = this.state.fields;
 
     return (
-      <form onSubmit={ this.handleSubmit }>
-        <h2>Create Your Profile</h2>
+      <Card className='card'>
+        <h2 className='header-tab'>Create Your Profile</h2>
+        <form onSubmit={ this.handleSubmit }>
 
-        <section className='image-upload-area'>
+          <section className='image-upload-area'>
 
-          <div id='profile-image' className='profile-image-display'></div>
-          <RaisedButton
-            containerElement='label'
-            label='Add an Image'>
-              { fields.imageupload.element }
-          </RaisedButton>
+            <div id='profile-image' className='profile-image-display'></div>
+            <RaisedButton
+              containerElement='label'
+              label='Add an Image'>
+                { fields.imageupload.element }
+            </RaisedButton>
 
-        </section>
+          </section>
 
-        { fields.name.element } <br />
-        { fields.bio.element } <br />
-        { fields.location.element } <br />
+          <section className='general-info'>
+            { fields.name.element } <br />
+            { fields.bio.element } <br />
+            { fields.location.element } <br />
+            { fields.email.element } <br />
+            { fields.socialLinks.element } <br />
 
-        <section className='skills-list-area'>
+            <ul className='skills-list'>
+              {
+                this.skillsList.map( (skill) => {
+                  return <Card style={skillsCardStyles}><li style={skillStyles}>{skill}</li></Card>
+                })
+              }
+            </ul> <br />
+            <TextField id='skills-input' hintText='Enter Your Skills'/> <br />
+            <FlatButton
+              label={'Add a Skill'}
+              primary={true}
+              onTouchTap={() => this.addSkillToList(document.getElementById('skills-input').value)}
+            />
 
-          <ul className='skills-list'>
-            {
-              this.skillsList.map( (skill) => {
-                return <Card style={skillsCardStyles}><li style={skillStyles}>{skill}</li></Card>
-              })
-            }
-          </ul> <br />
-          <TextField id='skills-input' hintText='Enter Your Skills'/> <br />
-          <FlatButton
-            label={'Add a Skill'}
-            onTouchTap={() => this.addSkillToList(document.getElementById('skills-input').value)}
-          />
-        </section>
+          </section>
 
 
-        { fields.email.element } <br />
-        { fields.socialLinks.element } <br />
-        <Link to='/yourprofile' >
-          <RaisedButton
-              label='Submit'
-              onTouchTap={() => this.handleSubmit()}
-          >
-          </RaisedButton>
-        </Link>
-      </form>
+
+
+          <div className='submit-button-wrapper'>
+            <Link to='/yourprofile' >
+
+                <RaisedButton
+                    label='Submit'
+                    primary={true}
+                    style={{width: '70px'}}
+                    onTouchTap={() => this.handleSubmit()}
+                >
+                </RaisedButton>
+
+            </Link>
+          </div>
+
+        </form>
+      </Card>
     );
   }
 }
