@@ -70,8 +70,8 @@ const SingleProject = ({ project }) => {
       </div>
 
         {
-          project.owner === Meteor.userId() &&
-          <Link to={`/inviteusers`}>
+          project.owner !== Meteor.userId() &&
+          <Link to={`/nominate/${project._id}`}>
               <RaisedButton label='Invite Team' className='join' primary={true} />
           </Link>
         }

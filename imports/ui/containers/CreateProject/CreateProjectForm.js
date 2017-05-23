@@ -28,6 +28,8 @@ const rolesCardStyles = {
   height: '40px',
   width: '60px',
   margin: '5px',
+  padding: '0 10px',
+  textAlign: 'center',
   display: 'flex',
   flexFlow: 'row wrap',
   justifyContent: 'center',
