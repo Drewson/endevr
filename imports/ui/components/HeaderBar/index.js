@@ -27,8 +27,13 @@ const HeaderBar = ({ currentUserId }) =>  (
         }
         {
           !!currentUserId &&
+          <Link to='/inviteusers'><FlatButton style={{color: 'white'}} label='Users'/></Link>
+        }
+        {
+          !!currentUserId &&
          <MessagesDrawer />
         }
+
       </div>
     }
     iconElementRight={

@@ -19,7 +19,7 @@ import { Profiles } from '../../../api/profiles';
 const messagesButtonStyles = {
   color: 'white',
   position: 'absolute',
-  left: '400px',
+  left: '450px',
   top: '10px',
   display: 'flex',
   justifyContent: 'center',
@@ -56,12 +56,14 @@ class MessagesDrawer extends Component {
   render() {
     return (
       <div>
+
         <IconButton
           style={messagesButtonStyles}
           onTouchTap={() => this.handleToggle()}
         >
-        <SpeakerNotes style={{color: 'white', 'marginTop': '25%'}} />
+          <SpeakerNotes style={{color: 'white', 'marginTop': '25%'}} />
         </IconButton>
+
         <Drawer open={this.state.open}>
 
         {
