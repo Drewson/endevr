@@ -25,7 +25,6 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
 
-
     Nominations.remove({_id: nominationId});
   }
 

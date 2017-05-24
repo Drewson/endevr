@@ -37,8 +37,6 @@ Meteor.methods({
             {_id: projectId},
             {$push: { team: teamMember }
         });
-
-        console.log(Projects.find().fetch());
     }
 
 });

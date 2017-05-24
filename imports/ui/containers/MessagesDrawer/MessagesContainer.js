@@ -42,8 +42,6 @@ class MessagesDrawer extends Component {
 
     let teamMemberInfo = {...newMemberProfile, role: nominationDetails.role};
 
-    console.log(teamMemberInfo);
-
     Meteor.call( 'projects.addTeamMember', teamMemberInfo, projectId );
 
     Meteor.call( 'nominations.deleteNomination', nominationDetails._id );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Meteor } from 'meteor/meteor';
 
@@ -25,11 +26,26 @@ const Message = ({ details, userProfile, acceptTeamRequest, rejectTeamRequest })
 
   return (
     <Card style={messagePreviewStyles}>
-      <Avatar style={avatarStyles} src={userProfile.imageupload} />
+      <Link to={{
+        pathname: `/users/${details.userId}`,
+        state: `/`
+      }}>
+        <Avatar style={avatarStyles} src={userProfile.imageupload} />
+      </Link>
 
       <p className='message-preview-text'>
-        <span className='bold'>{userProfile.name}</span>  wants to join your team: <span className='bold'>{details.project}</span>
+        <Link to={{
+          pathname: `/users/${details.userId}`,
+          state: `/`
+        }}>
+          <span className='bold'>{userProfile.name}</span>
+        </Link>  wants to join your team: <span className='bold'>{details.projectName}</span>
       </p>
+
+      <div className='message-content'>
+        <h4>Message:</h4>
+        <p>{details.message}</p>
+      </div>
 
       <div className='message-button-container'>
         <RaisedButton

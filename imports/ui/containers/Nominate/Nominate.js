@@ -37,10 +37,12 @@ class Nominate extends Component {
             alert('You haven\'t provided all the required information!');
         }
 
+        console.log(this.props.project.projectname);
+
         const formData = {
             userId: Meteor.userId(),
             projectId: this.props.project._id,
-            project: this.props.project.name,
+            projectName: this.props.project.projectname,
             projectOwner: this.props.project.owner,
             role: this.state.selectedRole,
             message: this.state.message

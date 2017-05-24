@@ -31,6 +31,7 @@ const MessagesList = ({ nominations, userProfiles, acceptTeamRequest, rejectTeam
             });
 
             return <Message
+                    key={nomination._id + Date.now()}
                     details={nomination}
                     userProfile={userProfile[0]}
                     acceptTeamRequest={acceptTeamRequest}

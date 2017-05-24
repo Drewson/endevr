@@ -18,7 +18,7 @@ class NominateContainer extends Component {
       {
         this.props.projects.map((project) => {
           return project._id === this.props.match.params.projectId &&
-            <Nominate project={project} />
+            <Nominate key={project.name + Date.now()} project={project} />
         })
       }
       </div>
